@@ -2,7 +2,10 @@ import "./style.css";
 import { Link } from "react-router-dom";
 import {  useContext} from "react";
 import { GlobalContext } from "../../../pages/GlobalState";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchData } from "../../../assets/api/dataFetching";
+import { minesSliceAction } from "../../../store/mines-slice";
 
 
 function Mine() {
@@ -10,7 +13,13 @@ function Mine() {
   const lang = useSelector(state => state.langReducer.lang);
   const descriptions = useSelector(state => state.minesReducer.descriptions);
   const main_title = useSelector(state => state.minesReducer.main_title);
+  const dispatch = useDispatch();
 
+
+  useEffect(() => {
+    fetchData(!lang ? `az/projects` : `en/projects`)
+    .then(data => dispatch(minesSliceAction.getAllMines(data.data)));
+  }, [lang,dispatch])
 
   const handleClick = (index) => {
     window.scroll(0,0);
