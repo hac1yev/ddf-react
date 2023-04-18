@@ -9,6 +9,7 @@ import { rehberlikSlice } from "./rehberlik-slice";
 import { structureSlice } from "./structure-slice";
 import { galerySlice } from "./galery-slice";
 import { vacancySlice } from "./vacancy-slice";
+import { searchSlice } from "./search-slice";
 
 export const store = configureStore({
     reducer: {
@@ -22,5 +23,6 @@ export const store = configureStore({
         structureReducer: structureSlice.reducer,
         galeryReducer: galerySlice.reducer,
         vacancyReducer: vacancySlice.reducer,
+        searchReducer: searchSlice.reducer,
     },
 });

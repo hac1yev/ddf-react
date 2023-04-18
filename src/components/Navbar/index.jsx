@@ -5,6 +5,7 @@ import logo from "../../img/logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { langSliceAction } from "../../store/lang-slice";
 import search from '../../img/search.png';
+import { searchSliceAction } from "../../store/search-slice";
 
 function Navbar(props) {
   const lang = useSelector(state => state.langReducer.lang);
@@ -12,28 +13,25 @@ function Navbar(props) {
   const [menu,setMenu] = useState(false);
   const [searchIcon,setSearchIcon] = useState(false);
 
-
-  // Context API-dəki qlobal state-lər
-  // const { setContextData , setGaleryText , setLang , lang , setSearchData  } = useContext(GlobalContext);
-
-
   // Axtarılan məlumatın innerText-nin qlobal state-ə atılması 
   const getSearchValue = (e) =>{
-    // const searcInput = document.querySelector('.search-input')
-    // window.localStorage.setItem('searchText',searcInput.value);
+    const searcInput = document.querySelector('.search-input')
+    window.localStorage.setItem('searchText',searcInput.value);
     // setSearchData(searcInput.value);
+    dispatch(searchSliceAction.getAllStructure(searcInput.value));
   }
 
   // Menu itemlərə kliklənən zaman onların innerText-nin qlobal state-ə atılması
-  // const getContextData = (e) => {
-  //   setContextData(e.target.innerText); 
-  //   document.querySelector(".responsive-menu").style.top = "-100vh";
-  //   setMenu(true);
-  //   window.localStorage.setItem('aboutText', e.target.innerText);
-  // }
-  // const handleGaleryContext = (e) => {
-  //   setGaleryText(e.target.innerText);
-  // };
+  const getContextData = (e) => {
+    // setContextData(e.target.innerText); 
+    document.querySelector(".responsive-menu").style.top = "-100vh";
+    setMenu(true);
+    window.localStorage.setItem('aboutText', e.target.innerText);
+  };
+
+  const handleGaleryContext = (e) => {
+    // setGaleryText(e.target.innerText);
+  };
 
   // Dil dəyişməsi zamanı innerText-nin qlobal state-ə göndərilməsi 
   const getChangeLang = (e) => {
@@ -109,44 +107,44 @@ function Navbar(props) {
                 <div className="drop-menu">
                   <Link
                     to="/about/history"
-                    // onClick={getContextData}
+                    onClick={getContextData}
                   >
                     {!lang ? "Tariximiz " : 'History'}
                   </Link>
                   <Link
                     to="/about/mission-vision"
-                    // onClick={getContextData}
+                    onClick={getContextData}
                   >
                    {!lang ? "Missiya və Hədəflərimiz" : 'Mission and Vision'}
                   </Link>
                   <Link
                     to="/about/management"
-                    // onClick={getContextData}
+                    onClick={getContextData}
                   >
                    {!lang ? "Rəhbərlik" : 'Management'}
                   </Link>
                   <Link
                     to="/about/supervisory"
-                    // onClick={getContextData}
+                    onClick={getContextData}
                   >
                     {!lang ? "Müşahidə Şurası" : 'Supervisory Board'}
                   </Link>
                   
                   <Link
                     to="/about/audit"
-                    // onClick={getContextData}
+                    onClick={getContextData}
                   >
                    {!lang ? "Maliyyə və Audit" : 'Finance and Audit'}
                   </Link>
                   <Link
                     to="/about/structure"
-                    // onClick={getContextData}
+                    onClick={getContextData}
                   >
                    {!lang ? "Struktur" : 'Structure'}
                   </Link>
                   <Link
                     to="/about/legislation"
-                    // onClick={getContextData}
+                    onClick={getContextData}
                   >
                     {!lang ? "Qanunvericilik" : 'Legislation'}
                   </Link>
@@ -204,7 +202,7 @@ function Navbar(props) {
                   </Link>
                   <Link
                     to="/media/gallery/photos"
-                    // onClick={handleGaleryContext}
+                    onClick={handleGaleryContext}
                   >
                     {!lang ? "Qalereya" : 'Gallery'}
                   </Link>

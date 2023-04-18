@@ -3,17 +3,27 @@ import SearchItem from "../components/Media/SearchItem";
 import '../assets/css/Galery.css';
 import Footer from "../components/Footer"
 import Navbar from "../components/Navbar";
-import { useContext } from "react";
-import { GlobalContext} from "./GlobalState";
-
+import { useDispatch, useSelector } from "react-redux";
+import { fetchData } from "../assets/api/dataFetching";
+import { newsSliceAction } from "../store/news-slice";
 
 const Search = () => {
     // Context api-dəki qlobal state-lər
-    const {newsData , lang , searchData} = useContext(GlobalContext)
+    // const { searchData } = useContext(GlobalContext);
 
-    // Axtarış zamanı filterlənmiş məlumatların əldə edilməsi 
-    let filteredNews = newsData.filter(item => item.title.toLowerCase().trim().includes(searchData))
-    const netice = filteredNews.length
+    const searchData = useSelector(state => state.searchReducer.searchedText);
+    const lang = useSelector(state => state.langReducer.lang);
+    const newsData = useSelector(state => state.newsReducer.items);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        fetchData(!lang ? `az/news` : `en/news`)
+        .then(data => dispatch(newsSliceAction.getAllNews(data.data)));
+    }, [lang,dispatch]);
+
+        // Axtarış zamanı filterlənmiş məlumatların əldə edilməsi 
+        let filteredNews = newsData.filter(item => item.title.toLowerCase().trim().includes(searchData))
+        const netice = filteredNews.length
 
     useEffect(() => {
         window.localStorage.setItem('newsData', JSON.stringify(newsData));
@@ -23,7 +33,7 @@ const Search = () => {
         <>
             <div className='heading-all'>
                 <div className="container heading-all-container header-bg-respon">
-                    <Navbar title={lang === 'az' ? 'Axtarış' : 'Search'} />
+                    <Navbar title={!lang ? 'Axtarış' : 'Search'} />
                 </div>
             </div>
             <div className="galery">
