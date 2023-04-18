@@ -1,8 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import VacancyHistory from '../components/Vacancy/VacancyHistory';
-import { GlobalContext } from './GlobalState';
 import '../assets/css/Vacancy.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';

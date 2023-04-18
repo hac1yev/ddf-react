@@ -6,8 +6,6 @@ import "../assets/css/VacancyDetail.css";
 import company from "../img/VacancyDetail/company.svg";
 import VacancyItems from "../components/Vacancy/VacancyItems";
 import { useState } from "react";
-import { useContext } from "react";
-import { GlobalContext } from "./GlobalState";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Swal from 'sweetalert2';

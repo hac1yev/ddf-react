@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import "../assets/css/Career.css";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
 import muraciet from '../img/muraciet.png'
 import vakansiya from '../img/vakansiya.png'
-import { GlobalContext } from "./GlobalState";
 import { fetchData } from "../assets/api/dataFetching";
 import { useSelector } from "react-redux";
 

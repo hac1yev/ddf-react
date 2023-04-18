@@ -1,8 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import "../assets/css/Müraciet.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { GlobalContext } from "./GlobalState";
 import axios from "axios";
 import Swal from 'sweetalert2';
 import { useFormik } from "formik";

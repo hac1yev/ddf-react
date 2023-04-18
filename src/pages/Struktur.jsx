@@ -3,8 +3,6 @@ import { fetchData } from "../assets/api/dataFetching.js";
 import rehberlikClose from "../img/close2.png";
 import { useState } from "react";
 import '../assets/css/strukturModal.css';
-import { GlobalContext } from "./GlobalState";
-import { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { structureSliceAction } from "../store/structure-slice.js";
 
@@ -29,7 +27,7 @@ const Struktur = () => {
   useEffect(() => {
     fetchData(!lang ? `az/structer` : `en/structer`)
     .then((data) => dispatch(structureSliceAction.getAllStructure(data.data)));
-  },[lang])
+  },[lang,dispatch])
 
   return (
     <div>

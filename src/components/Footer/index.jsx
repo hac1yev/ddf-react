@@ -1,15 +1,6 @@
 import { Link } from 'react-router-dom'
-import { useContext, useEffect} from "react";
 import "./style.css"
-import fb from "../../img/fb.svg";
-import insta from "../../img/insta.svg";
-import linkedin from "../../img/in.svg"
 import btn from "../../img/subscribebtn.svg"
-import { GlobalContext } from "../../pages/GlobalState";
-import {fetchData} from '../../assets/api/dataFetching'
-import axios from 'axios';
-import { useState } from 'react';
-import Swal from 'sweetalert2';
 import { useSelector } from 'react-redux';
 // import {postDatas} from '../../assets/api/dataPost'
 // import axios from 'axios';

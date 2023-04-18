@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
 import group45 from '../../../img/group45.svg';
 import "./style.css";
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { fetchData } from '../../../assets/api/dataFetching';
-import { GlobalContext } from '../../../pages/GlobalState';
 import { useSelector } from 'react-redux';
 
 function HomeNews() {

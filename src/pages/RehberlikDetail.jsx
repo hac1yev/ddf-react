@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
-import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import { GlobalContext } from "./GlobalState";
 import '../assets/css/RehberlikModal.css';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchData } from "../assets/api/dataFetching";
@@ -24,7 +22,7 @@ const RehberlikDetail = () => {
             id: rehberlikId,
             data: data.data
         })))
-    }, [lang,dispatch]);
+    }, [lang,dispatch,rehberlikId]);
 
     return (
         <>

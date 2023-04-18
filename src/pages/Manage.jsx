@@ -1,17 +1,16 @@
-import React, { useContext, useEffect} from "react";
+import React, { useEffect} from "react";
 import "../assets/css/Manage.css";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import rehberlikSag from "../img/rehberlik-sag.png";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 const Manage = () => {
   // Context api-dəki qlobal state-lər
   // const {contextData , setContextData , lang} = useContext(GlobalContext);
 
   const lang = useSelector(state => state.langReducer.lang);
-  const dispatch = useDispatch();
   const { pathname } = useLocation();
   
   console.log(pathname);

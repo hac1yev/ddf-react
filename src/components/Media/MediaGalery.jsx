@@ -1,9 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import group45 from "../../img/group45.svg";
 import vector from "../../img/Vector.svg";
 import vector2 from "../../img/Vector2.svg";
 import { Link } from "react-router-dom";
-import { GlobalContext } from "../../pages/GlobalState";
 import MediaPhotoItems from "./MediaPhotoItems";
 import { useEffect } from "react";
 import { fetchData } from "../../assets/api/dataFetching";

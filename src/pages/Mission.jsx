@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { useContext } from "react";
 import { fetchData } from "../assets/api/dataFetching";
-import { GlobalContext } from "./GlobalState";
 import '../assets/css/Mission.css';
 import { useDispatch, useSelector } from "react-redux";
 import { misVisSliceAction } from "../store/misVis-slice";
@@ -10,7 +8,6 @@ import { misVisSliceAction } from "../store/misVis-slice";
 const Mission = () => {
   // Tabları dəyişmək üçün state , Dil və Datanı saxlamaq üçün istifadə olunan state-lər
   const [isActive,setIsActive] = useState(true);
-  const [misVisData,setMisVisData] = useState([]);
   // const {lang} = useContext(GlobalContext) 
 
   const lang = useSelector(state => state.langReducer.lang);

@@ -6,8 +6,6 @@ import fb from "../img/fb.svg";
 import insta from "../img/insta.svg";
 import linkedin from "../img/in.svg";
 import axios from "axios";
-import { useContext } from "react";
-import { GlobalContext } from "./GlobalState";
 import { fetchData } from "../assets/api/dataFetching";
 import Swal from 'sweetalert2';
 import { useFormik } from "formik";

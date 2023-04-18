@@ -4,19 +4,13 @@ import group55 from "../../img/vacancy/group55.svg";
 import group65 from "../../img/vacancy/group65.svg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { GlobalContext } from "../../pages/GlobalState";
 import { useSelector } from "react-redux";
 
 const VacancyItems = ({
   title,
-  description,
   startDate,
   endDate,
   id,
-  work_qraf,
-  sections,
-  salary
 }) => {
 
   // State
@@ -40,6 +34,8 @@ const VacancyItems = ({
     <>
       <Link 
         className="vacancy-item-link"
+        onMouseEnter={() => setIsHover(true)}
+        onMouseLeave={() => setIsHover(false)}
         to={`/vacancies/${id}`} 
         style={{ color: 'rgba(24, 25, 24, 1)' }}
         // onClick={() => {

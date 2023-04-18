@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../../components/Footer";
 import Companyinfo from "../../components/HomePage/Companyinfo";
 import Headerbox from "../../components/HomePage/Headerbox";
@@ -8,7 +8,6 @@ import Mine from "../../components/HomePage/Mine";
 import Navbar from "../../components/Navbar";
 import "./style.css";
 import loadingGif from '../../img/gif-ddf.gif'
-import { GlobalContext } from "../GlobalState";
 
 const Home = () => {
   // Preloader state-i

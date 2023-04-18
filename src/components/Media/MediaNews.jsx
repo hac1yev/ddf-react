@@ -2,8 +2,6 @@ import React from "react";
 import MediaItem from "./MediaItem";
 import group45 from "../../img/group45.svg";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { GlobalContext } from "../../pages/GlobalState";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchData } from "../../assets/api/dataFetching";

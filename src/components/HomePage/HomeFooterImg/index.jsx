@@ -2,8 +2,6 @@ import React, {useEffect, useState } from "react";
 import Slider from "react-slick";
 import "./style.css"
 import { fetchData } from "../../../assets/api/dataFetching";
-import { GlobalContext } from "../../../pages/GlobalState";
-import { useContext } from "react";
 import { useSelector } from "react-redux";
 
 

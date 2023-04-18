@@ -2,8 +2,6 @@ import "./style.css";
 import intersect from "../../../img/Intersect.webp";
 import { useEffect,useState } from "react";
 import { fetchData } from "../../../assets/api/dataFetching.js";
-import { GlobalContext } from "../../../pages/GlobalState";
-import { useContext } from "react";
 import { useSelector } from "react-redux";
 
 function Companyinfo() {

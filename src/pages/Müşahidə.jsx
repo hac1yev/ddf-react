@@ -1,9 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { fetchData } from '../assets/api/dataFetching';
 import '../assets/css/Musahide.css';
-import { GlobalContext } from "./GlobalState";
 import { useSelector } from 'react-redux';
 
 const Müşahidə = () => {

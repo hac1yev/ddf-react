@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { useContext } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { fetchData } from "../assets/api/dataFetching.js";
 import '../assets/css/Qanunvericilik.css';
 import Pagination from "../components/Pagination/Pagination.jsx";
 import qanunClose from '../img/close2.png';
-import { GlobalContext } from "./GlobalState";
 import { useSelector } from "react-redux";
 
 const Qanunvericilik = () => {

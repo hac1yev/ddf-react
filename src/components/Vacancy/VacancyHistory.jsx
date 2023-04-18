@@ -4,8 +4,6 @@ import group55 from "../../img/vacancy/group55.svg";
 import group65 from "../../img/vacancy/group65.svg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { GlobalContext } from "../../pages/GlobalState";
 import { useSelector } from "react-redux";
 
 const VacancyHistory = ({

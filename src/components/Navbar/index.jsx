@@ -1,12 +1,8 @@
-import React, { Suspense, useContext, useState} from "react";
+import React, { Suspense } from "react";
 import "./style.css";
 import { Link } from "react-router-dom";
 import logo from "../../img/logo.png";
-import search from "../../img/search.svg";
-import { GlobalContext } from "../../pages/GlobalState";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { newsSliceAction } from "../../store/news-slice";
 import { langSliceAction } from "../../store/lang-slice";
 
 
@@ -15,9 +11,6 @@ function Navbar(props) {
   const lang = useSelector(state => state.langReducer.lang);
   const dispatch = useDispatch();
 
-  // State-lər
-  const [searchIcon, setSearchIcon] = useState(false);
-  const [menu, setMenu] = useState(true);
 
   // Context API-dəki qlobal state-lər
   // const { setContextData , setGaleryText , setLang , lang , setSearchData  } = useContext(GlobalContext);

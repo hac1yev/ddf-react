@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 import vector2 from '../img/Vector2.svg';
 import '../assets/css/Galery.css';
 import MediaVideoGaleryİtem from "../components/Media/MediaVideoGaleryİtem";
-import { useContext } from "react";
-import { GlobalContext } from "./GlobalState";
 import { useState } from "react";
 import Pagination from "../components/Pagination/Pagination";
 import { useDispatch, useSelector } from "react-redux";

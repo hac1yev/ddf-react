@@ -1,11 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
-import { useContext } from 'react'
 import { useEffect } from 'react'
 import audit from '../../src/img/tax.svg'
 import { fetchData } from '../assets/api/dataFetching'
 import '../assets/css/Audit.css'
-import { GlobalContext } from './GlobalState'
 import { useSelector } from 'react-redux'
 
 const Audit = () => {

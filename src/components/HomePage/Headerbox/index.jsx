@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
 import "./style.css";
-import { GlobalContext } from "../../../pages/GlobalState";
-import { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { fetchData } from "../../../assets/api/dataFetching";
