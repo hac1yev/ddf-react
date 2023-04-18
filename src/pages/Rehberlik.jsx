@@ -6,8 +6,6 @@ import { fetchData } from "../assets/api/dataFetching";
 import { rehberlikSliceAction } from "../store/rehberlik-slice";
 
 const Rehberlik = () => {
-  // Rəhbərliyin datasını GlobalContextdən yığırıq və global state-ləri gətiririk componentə
-  // const { lang, rehberlikData } = useContext(GlobalContext);
   const lang = useSelector(state => state.langReducer.lang);
   const rehberlikData = useSelector(state => state.rehberlikReducer.items);
   const dispatch = useDispatch();
@@ -30,7 +28,6 @@ const Rehberlik = () => {
           role="tabpanel"
           aria-labelledby="v-pills-profile-tab"
         >
-          {/* Gələn datanı map-ə salıb Uİ-da əks etdiririk */}
           {rehberlikData.map((item) => (
             <div className="manage-container col-lg-4" key={item.id}>
               <div className="img-sec">

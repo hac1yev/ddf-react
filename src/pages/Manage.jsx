@@ -1,4 +1,4 @@
-import React, { useEffect} from "react";
+import React, { useEffect } from "react";
 import "../assets/css/Manage.css";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
@@ -13,7 +13,6 @@ const Manage = () => {
   const lang = useSelector(state => state.langReducer.lang);
   const { pathname } = useLocation();
   
-  console.log(pathname);
 
   const a = document.querySelector('.links-div.active');
 

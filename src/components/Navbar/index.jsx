@@ -1,15 +1,16 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 import "./style.css";
 import { Link } from "react-router-dom";
 import logo from "../../img/logo.png";
 import { useDispatch, useSelector } from "react-redux";
 import { langSliceAction } from "../../store/lang-slice";
-
-
+import search from '../../img/search.png';
 
 function Navbar(props) {
   const lang = useSelector(state => state.langReducer.lang);
   const dispatch = useDispatch();
+  const [menu,setMenu] = useState(false);
+  const [searchIcon,setSearchIcon] = useState(false);
 
 
   // Context API-dəki qlobal state-lər
@@ -17,11 +18,11 @@ function Navbar(props) {
 
 
   // Axtarılan məlumatın innerText-nin qlobal state-ə atılması 
-  // const getSearchValue = (e) =>{
-  //   const searcInput = document.querySelector('.search-input')
-  //   window.localStorage.setItem('searchText',searcInput.value);
-  //   setSearchData(searcInput.value);
-  // }
+  const getSearchValue = (e) =>{
+    // const searcInput = document.querySelector('.search-input')
+    // window.localStorage.setItem('searchText',searcInput.value);
+    // setSearchData(searcInput.value);
+  }
 
   // Menu itemlərə kliklənən zaman onların innerText-nin qlobal state-ə atılması
   // const getContextData = (e) => {
@@ -42,35 +43,32 @@ function Navbar(props) {
   }
 
   // Dil dəyişməsi zammanı hansı dil olduğunu yoxlayan funksiya
-  
 
-
-
-  // const getSearchItem = () => {
-  //   if (!searchIcon) {
-  //     document.querySelector(".search-form").style.top = "0px"
-  //     document.querySelector(".search-close-btn").style.top = "50px"
-  //     setSearchIcon(true)
-  //     document.querySelector(".responsive-menu").style.top = "-100vh"
-  //     setMenu(true)
-  //   } else {
-  //     document.querySelector(".search-form").style.top = "-100vh"
-  //     document.querySelector(".search-close-btn").style.top = "-100vh"
-  //     setSearchIcon(false)
-  //   }
-  // }
+  const getSearchItem = () => {
+    if (!searchIcon) {
+      document.querySelector(".search-form").style.top = "0px"
+      document.querySelector(".search-close-btn").style.top = "50px"
+      setSearchIcon(true)
+      document.querySelector(".responsive-menu").style.top = "-100vh"
+      setMenu(true)
+    } else {
+      document.querySelector(".search-form").style.top = "-100vh"
+      document.querySelector(".search-close-btn").style.top = "-100vh"
+      setSearchIcon(false)
+    }
+  }
 
   // Responsive Menu
-  // const getChangeMenu = (e) => {
-  //   if (menu) {
-  //     setMenu(false)
-  //     document.querySelector(".responsive-menu").style.top = "0px"
+  const getChangeMenu = (e) => {
+    if (menu) {
+      setMenu(false)
+      document.querySelector(".responsive-menu").style.top = "0px"
 
-  //   } else {
-  //     document.querySelector(".responsive-menu").style.top = "-100vh"
-  //     setMenu(true)
-  //   }
-  // }
+    } else {
+      document.querySelector(".responsive-menu").style.top = "-100vh"
+      setMenu(true)
+    }
+  }
 
   return (
     <Suspense fallback='Loading...'>
@@ -82,16 +80,20 @@ function Navbar(props) {
                 <img className="logo-img" src={logo} alt="Logo" />
               </Link>
             </div>
-            {/* <button className="responsive-btn" onClick={getChangeMenu}>
+            <button className="responsive-btn" 
+            onClick={getChangeMenu}
+            >
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">
                 <path fillRule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
               </svg>
-            </button> */}
+            </button>
           </div>
           <div className="responsive-menu">
-            {/* <button className="close-btn" onClick={getChangeMenu}> <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-x-lg" viewBox="0 0 16 16">
+            <button className="close-btn" 
+            onClick={getChangeMenu}
+            > <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-x-lg" viewBox="0 0 16 16">
               <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
-            </svg></button> */}
+            </svg></button>
             <ul className="menu-list">
               <li className="main-page-li">
                 <Link to="/">
@@ -235,7 +237,12 @@ function Navbar(props) {
                 </Link>
               </li>
             </ul>
-            {/* <button className="search-btn" onClick={getSearchItem}><img src={search} alt="search icon" /></button> */}
+            <button 
+              className="search-btn" 
+              onClick={getSearchItem}
+            >
+              <img src={search} alt="search icon" />
+            </button>
             <div className="page-lang">
               <span>{!lang ? 'AZE' : 'ENG'}</span>
               <ul className="lang-option">
@@ -248,15 +255,15 @@ function Navbar(props) {
       <div className="container heading-all-container">
         <p className="heading-title">{props.title}</p>
       </div> 
-      {/* <form action="/search" className="search-form">
+      <form action="/search" className="search-form">
         <input onChange={getSearchValue} type="text" className="search-input" placeholder="Axtarış..." />
         <Link to={'/search'} onClick={getSearchValue} className="search-btn" style={{ marginLeft: '15px', width: '30px' }}><img style={{ width: '100%' }} src={search} alt="search icon" /></Link>
-      </form> */}
+      </form>
 
-      {/* <button className="search-close-btn" onClick={getSearchItem}><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-x-lg" viewBox="0 0 16 16">
+      <button className="search-close-btn" onClick={getSearchItem}><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-x-lg" viewBox="0 0 16 16">
         <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
       </svg>
-      </button> */}
+      </button>
     </Suspense>
   );
 }
