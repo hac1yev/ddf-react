@@ -1,0 +1,20 @@
+
+
+.rehberlik-overlay {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    background: rgba(0,0,0,0.6);
+    z-index: 100;
+}
+
+.modal-body img{
+    width: 100% ;
+}
+
+
+.modal-content{
+    height: auto;
+}
