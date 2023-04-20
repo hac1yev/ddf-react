@@ -9,4 +9,4 @@ export const fetchData = async (baseUrl) =>{
     });
     const {data} = response;
     return data;
-}
+};

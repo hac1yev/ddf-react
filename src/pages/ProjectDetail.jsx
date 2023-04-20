@@ -25,10 +25,11 @@ const ProjectDetail = () => {
 
   // Yataqlardan birinə kliklənən zaman uyğun itemin indexsini contex APİ-ə göndərir
   const handleClick = (index) => {
-    // window.scroll(0,0);
+    window.scrollTo(0,0);
     // window.localStorage.setItem('indexOfProject', index);
     // setProjectDetailIndex(index);
   };
+  
 
   useEffect(() => {
     fetchData(`${lang}/projects`)
@@ -131,7 +132,7 @@ const ProjectDetail = () => {
                   data-aos="zoom-in"
                   data-aos-anchor-placement="top-bottom"
                   data-aos-duration="500"  
-                  onClick={handleClick.bind(null,index)}
+                  onClick={handleClick}
                 >
                   <div style={{ width: '100%' }}>
                     <p className="slider-description">{items.title}</p>

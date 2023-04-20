@@ -34,14 +34,14 @@ const NewsDetail = () => {
   const slidesData = [];
 
   // Slider şəkillərinin slidesData boş array-nə yığılması
-  // for(let i=0; i<newsDetailData.imgs.length; i++) {
-  //   if(newsDetailData.imgs[i] !== null){
-  //     slidesData.push({
-  //       id: i+1,
-  //       image: newsDetailData.imgs[i]
-  //     })
-  //   }
-  // }
+  for(let i=0; i<newsDetailData.imgs.length; i++) {
+    if(newsDetailData.imgs[i] !== null){
+      slidesData.push({
+        id: i+1,
+        image: newsDetailData.imgs[i]
+      })
+    }
+  }
 
   console.log(slidesData);
 
@@ -52,6 +52,7 @@ const NewsDetail = () => {
       id: newsId,
     })))
   }, [newsId,lang,dispatch]);
+  console.log(newsDetailData.imgs.length)
 
   // Son 3 xəbərin get request zamanı əldə edilməsi 
   useEffect(() => {
@@ -62,8 +63,6 @@ const NewsDetail = () => {
     setNav2(slider2);
   },[slider1,slider2,lang]);
 
- 
-
   const settingsMain = {
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -73,7 +72,7 @@ const NewsDetail = () => {
   };
 
   const settingsThumbs = {
-    // slidesToShow: newsDetailData.imgs.length > 4 ? 4 : newsDetailData.imgs.length - 1,
+    slidesToShow: newsDetailData.imgs.length > 4 ? 4 : newsDetailData.imgs.length - 1,
     slidesToScroll: 1,
     asNavFor: '.slider-for',
     dots: false,
@@ -85,7 +84,7 @@ const NewsDetail = () => {
         {
           breakpoint: 1024,
           settings: {
-            // slidesToShow: newsDetailData.imgs.length > 3 ? 3 : newsDetailData.imgs.length - 1,
+            slidesToShow: newsDetailData.imgs.length > 3 ? 3 : newsDetailData.imgs.length - 1,
             slidesToScroll: 1,
             infinite: true,
             dots: true
@@ -94,7 +93,7 @@ const NewsDetail = () => {
         {
           breakpoint: 600,
           settings: {
-            // slidesToShow: newsDetailData.imgs.length > 2 ? 2 : newsDetailData.imgs.length - 1,
+            slidesToShow: newsDetailData.imgs.length > 2 ? 2 : newsDetailData.imgs.length - 1,
             slidesToScroll: 1,
             initialSlide: 1
           }

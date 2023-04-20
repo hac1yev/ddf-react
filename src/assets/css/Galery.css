@@ -73,6 +73,10 @@
     color: #fff;
 }
 
+.galery-link:hover {
+    color: #fff;
+}
+
 @media screen and (max-width: 320px) {
     .galery {
         padding: 30px 0;

@@ -2,6 +2,7 @@ import React, { Suspense, useState } from "react";
 import "./style.css";
 import { Link } from "react-router-dom";
 import logo from "../../img/logo.png";
+import logo_en from '../../img/logo_en.png';
 import { useDispatch, useSelector } from "react-redux";
 import { langSliceAction } from "../../store/lang-slice";
 import search from '../../img/search.png';
@@ -75,7 +76,7 @@ function Navbar(props) {
           <div className="responsive-logo d-flex">
             <div className="logo">
               <Link to="/">
-                <img className="logo-img" src={logo} alt="Logo" />
+                <img className="logo-img" src={!lang ? logo : logo_en} alt="Logo" />
               </Link>
             </div>
             <button className="responsive-btn" 

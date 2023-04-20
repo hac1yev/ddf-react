@@ -1,15 +1,13 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { useSelector } from "react-redux";
+import '../assets/css/Galery.css';
 
 const Galery = () => {
-    // Context api-dəki qlobal state-lər
-    // const { galeryText, setGaleryText , lang } = useContext(GlobalContext);
     const lang = useSelector(state => state.langReducer.lang);
-
-    
+    const { pathname } = useLocation();
 
     const handleVideoGalery = (e) => {
         // setGaleryText(e.target.innerText);
@@ -32,18 +30,20 @@ const Galery = () => {
                     <Link
                         to="photos"
                         onClick={handleVideoGalery}
-                        // className={
-                        //     (galeryText === "Foto Qalereya" || galeryText === 'Photo Gallery' || galeryText === "Qalereya") ? "active" : "disactive"
-                        // }
+                        className={
+                            // (galeryText === "Foto Qalereya" || galeryText === 'Photo Gallery' || galeryText === "Qalereya") ? "active" : "disactive"
+                            pathname === '/media/gallery/photos' ? 'galery-link active' : 'galery-link'
+                        }
                     >
                       {lang === 'az' ? 'Foto Qalereya' : 'Photo Gallery'}
                     </Link>
                     <Link
                         to="videos"
                         onClick={handleVideoGalery}
-                        // className={
-                        //     (galeryText === "Video Qalereya" || galeryText === "Video Gallery") ? "active" : "disactive"
-                        // }
+                        className={
+                            // (galeryText === "Video Qalereya" || galeryText === "Video Gallery") ? "active" : "disactive"
+                            pathname === '/media/gallery/videos' ? 'galery-link active' : 'galery-link'
+                        }
                     >
                      {lang === 'az' ? 'Video Qalereya' : 'Video Gallery'}
                     </Link>

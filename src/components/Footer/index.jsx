@@ -1,9 +1,7 @@
-import { Link } from 'react-router-dom'
-import "./style.css"
-import btn from "../../img/subscribebtn.svg"
+import { Link } from 'react-router-dom';
+import "./style.css";
+import btn from "../../img/subscribebtn.svg";
 import { useSelector } from 'react-redux';
-// import {postDatas} from '../../assets/api/dataPost'
-// import axios from 'axios';
 
 function Footer() {
     const lang = useSelector(state => state.langReducer.lang);
@@ -132,9 +130,9 @@ function Footer() {
                         <div className="footer-social-media">
                             <h3>{lang === 'az' ? 'Bizi izləməyi unutma' : "Don't forget to follow us"}</h3>
                             <ul className="social-icons">
-                                {/* <a target={'_blank'} rel="noreferrer" href={data.fb}><li><img src={fb} alt="Facebook icon" /></li></a> */}
-                                {/* <a target={'_blank'} rel="noreferrer" href={data.instagram}><li><img src={insta} alt="Instagram Icon" /></li></a> */}
-                                {/* <a target={'_blank'} rel="noreferrer" href={data.linkedin}><li><img src={linkedin} alt="Linkedin icon" /></li></a> */}
+                                {/* <a target={'_blank'} rel="noreferrer" href={data.fb}><li><img src={fb} alt="Facebook icon" /></li></a>
+                                <a target={'_blank'} rel="noreferrer" href={data.instagram}><li><img src={insta} alt="Instagram Icon" /></li></a>
+                                <a target={'_blank'} rel="noreferrer" href={data.linkedin}><li><img src={linkedin} alt="Linkedin icon" /></li></a> */}
                                 {/* <a href='#' style={{ pointerEvents: 'none' }} ><li><img src={yt} alt="Youtube Icon" /></li></a> */}
                             </ul>
                         </div>

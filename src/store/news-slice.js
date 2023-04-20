@@ -3,7 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialNewsState = {
     items: [],
     mediaNewsItems: [],
-    newsDetailItems: {},
+    newsDetailItems: {
+        imgs: []
+    },
 };
 
 export const newsSlice = createSlice({
