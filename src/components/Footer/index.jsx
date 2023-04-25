@@ -16,8 +16,6 @@ function Footer() {
 
     // const { setContextData , setGaleryText, data , setData , lang  } = useContext(GlobalContext);
     const data = useSelector(state => state.socialReducer.socialMedias);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
     const dispatch = useDispatch();
 
     const clickEvent = (e) => {

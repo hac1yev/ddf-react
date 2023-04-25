@@ -52,11 +52,11 @@ const Vacancy = () => {
 
   // Forumdakı məlumatları doldurub axtarış buttonuna klikləyən zaman Vakansiya Elanlarını, vakansiyanın adı, başlama tarixi və son müraciət tarixinə görə filerləyən funksiya
   const handleVacancyFilterSubmit = (e) => {
-    // e.preventDefault();
-    // fetchData(`${lang}/filter/?work_name=${vacancyName}&start_d=${startDate}&end_d=${endDate}`)
-    // .then((data) => (
-    //   setVacancyData(data.data)
-    // ));
+    e.preventDefault();
+    fetchData(!lang ? `az/filter/?work_name=${vacancyName}&start_d=${startDate}&end_d=${endDate}` : `en/filter/?work_name=${vacancyName}&start_d=${startDate}&end_d=${endDate}`)
+    .then((data) => (
+      dispatch(vacancySliceAction.getAllVacancy(data.data))
+    ));
   };
 
   // Filter buttonuna klikləyən zaman alt sectionda filterləmə formunun bağlanmasını təmin edir
