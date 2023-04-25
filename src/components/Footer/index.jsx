@@ -25,7 +25,7 @@ function Footer() {
     //   axios.post(`http://api-ddf.asdfghjkl.gov.az/api/${lang}/email`, postData)
     //   .then(function (response) {
     //     Swal.fire(
-    //         `${lang === 'az' ? 'Abunə Olundu': 'Subscribed'}`,
+    //         `${!lang ? 'Abunə Olundu': 'Subscribed'}`,
     //         '',
     //         'success'
     //       )
@@ -33,7 +33,7 @@ function Footer() {
     //   .catch(function (error) {
     //     Swal.fire({
     //         icon: 'error',
-    //         title:`${lang === 'az' ? 'Xəta Baş Verdi': 'An Error Occurred'}`,
+    //         title:`${!lang ? 'Xəta Baş Verdi': 'An Error Occurred'}`,
     //         text: ''
     //       })
     //   });
@@ -57,47 +57,47 @@ function Footer() {
                 <div className='col-md-8'>
                     <ul className="footer-list footer-wrap">
                         <li>
-                            <span>{lang === 'az' ? 'HAQQIMIZDA' : 'ABOUT US'}</span>
+                            <span>{!lang ? 'HAQQIMIZDA' : 'ABOUT US'}</span>
                             <ul>
-                                <Link to="/about/history" onClick={clickEvent}><li>{lang === 'az' ? 'Tariximiz' : 'History'}</li></Link>
-                                <Link to="/about/mission-vision" onClick={clickEvent}><li>{lang === 'az' ? 'Missiya və Hədəflərimiz' : 'Mission and Vision'}</li></Link>
-                                <Link to="/about/management" onClick={clickEvent}><li>{lang === 'az' ? 'Rəhbərlik' : 'Management'}</li></Link>
-                                <Link to="/about/supervisory" onClick={clickEvent}><li>{lang === 'az' ? 'Müşahidə Şurası' : 'Supervisory Board'}</li></Link>
-                                <Link to="/about/structure" onClick={clickEvent}><li>{lang === 'az' ? 'Struktur' : 'Structure'}</li></Link>
-                                <Link to="/about/legislation" onClick={clickEvent}><li>{lang === 'az' ? 'Qanunvericilik' : 'Legislation'}</li></Link>
+                                <Link to="/about/history" onClick={clickEvent}><li>{!lang ? 'Tariximiz' : 'History'}</li></Link>
+                                <Link to="/about/mission-vision" onClick={clickEvent}><li>{!lang ? 'Missiya və Hədəflərimiz' : 'Mission and Vision'}</li></Link>
+                                <Link to="/about/management" onClick={clickEvent}><li>{!lang ? 'Rəhbərlik' : 'Management'}</li></Link>
+                                <Link to="/about/supervisory" onClick={clickEvent}><li>{!lang ? 'Müşahidə Şurası' : 'Supervisory Board'}</li></Link>
+                                <Link to="/about/structure" onClick={clickEvent}><li>{!lang ? 'Struktur' : 'Structure'}</li></Link>
+                                <Link to="/about/legislation" onClick={clickEvent}><li>{!lang ? 'Qanunvericilik' : 'Legislation'}</li></Link>
                             </ul>
                         </li>
                         <li style={{ width: '122px' }}>
-                            <span>{lang === 'az' ? 'SATINALMA' : 'PROCUREMENT'}</span>
+                            <span>{!lang ? 'SATINALMA' : 'PROCUREMENT'}</span>
                             <ul>
-                                <Link onClick={() => window.scrollTo(0, 0)} to="/purchase/purchase-announce"><li>{lang === 'az' ? 'Satınalma Elanları' : 'Procurement Announcements'}</li></Link>
-                                <Link onClick={() => window.scrollTo(0, 0)} to="/purchase/purchase-archive"><li>{lang === 'az' ? 'Satınalma Arxivi' : 'Procurement Archive'}</li></Link>
+                                <Link onClick={() => window.scrollTo(0, 0)} to="/purchase/purchase-announce"><li>{!lang ? 'Satınalma Elanları' : 'Procurement Announcements'}</li></Link>
+                                <Link onClick={() => window.scrollTo(0, 0)} to="/purchase/purchase-archive"><li>{!lang ? 'Satınalma Arxivi' : 'Procurement Archive'}</li></Link>
                             </ul>
                         </li>
                         <li>
-                            <span>{lang === 'az' ? 'FƏALİYYƏT' : 'ACTIVITY'}</span>
+                            <span>{!lang ? 'FƏALİYYƏT' : 'ACTIVITY'}</span>
                             <ul>
-                                <Link onClick={() => window.scrollTo(0, 0)} to="/mines"><li>{lang === 'az' ? 'Yataqlar' : 'Mines'}</li></Link>
+                                <Link onClick={() => window.scrollTo(0, 0)} to="/mines"><li>{!lang ? 'Yataqlar' : 'Mines'}</li></Link>
                                 {/* <Link onClick={() => window.scrollTo(0,0)} to="#"><li>KSM</li></Link> */}
                             </ul>
                         </li>
                         <li>
-                            <span>{lang === 'az' ? 'MEDİA' : 'MEDİA'}</span>
+                            <span>{!lang ? 'MEDİA' : 'MEDİA'}</span>
                             <ul>
-                                <Link onClick={() => window.scrollTo(0, 0)} to="/media/news"><li>{lang === 'az' ? 'Xəbərlər' : 'News'}</li></Link>
-                                <Link onClick={handleClick} to="/media/gallery/photos"><li>{lang === 'az' ? 'Qalereya' : 'Gallery'}</li></Link>
+                                <Link onClick={() => window.scrollTo(0, 0)} to="/media/news"><li>{!lang ? 'Xəbərlər' : 'News'}</li></Link>
+                                <Link onClick={handleClick} to="/media/gallery/photos"><li>{!lang ? 'Qalereya' : 'Gallery'}</li></Link>
                             </ul>
                         </li>
                         <li>
-                            <span>{lang === 'az' ? 'KARYERA' : 'CAREER'}</span>
+                            <span>{!lang ? 'KARYERA' : 'CAREER'}</span>
                             <ul>
                                 {/* <Link to="#"><li>Kadr siyasəti</li></Link> */}
-                                <Link onClick={() => window.scrollTo(0, 0)} to="/vacancies"><li>{lang === 'az' ? 'Vakansiyalar' : 'Vacancies'}</li></Link>
-                                <Link onClick={() => window.scrollTo(0, 0)} to="/apply"><li>{lang === 'az' ? 'Müraciət' : 'Apply'}</li></Link>
+                                <Link onClick={() => window.scrollTo(0, 0)} to="/vacancies"><li>{!lang ? 'Vakansiyalar' : 'Vacancies'}</li></Link>
+                                <Link onClick={() => window.scrollTo(0, 0)} to="/apply"><li>{!lang ? 'Müraciət' : 'Apply'}</li></Link>
                             </ul>
                         </li>
                         <li>
-                            <span>{lang === 'az' ? 'ƏLAQƏ' : 'CONTACT'}</span>
+                            <span>{!lang ? 'ƏLAQƏ' : 'CONTACT'}</span>
                             <ul>
                                 <Link to="#"><li>xxx-xxx-xxxxx</li></Link>
                             </ul>
@@ -107,7 +107,7 @@ function Footer() {
                 <div className='col-md-4'>
                     <div className="footer-contact">
                         <div className="suscribe-section">
-                            <h3>{lang === 'az' ? 'Bildirişləri əldə et' : 'Get notifications'}</h3>
+                            <h3>{!lang ? 'Bildirişləri əldə et' : 'Get notifications'}</h3>
                             <div className="suscribe">
                                 <form 
                                     // onSubmit={handleSubmit} 
@@ -118,7 +118,7 @@ function Footer() {
                                         // onChange={(e) => setEmail(e.target.value)} 
                                         type="email" name="sub_email" 
                                         id="sub_email" 
-                                        placeholder={lang === 'az' ? "E-mail ünvanınızı daxil edin" : "Enter your email adress"} 
+                                        placeholder={!lang ? "E-mail ünvanınızı daxil edin" : "Enter your email adress"} 
                                         required 
                                     />
                                     <button type='submit'>
@@ -128,7 +128,7 @@ function Footer() {
                             </div>
                         </div>
                         <div className="footer-social-media">
-                            <h3>{lang === 'az' ? 'Bizi izləməyi unutma' : "Don't forget to follow us"}</h3>
+                            <h3>{!lang ? 'Bizi izləməyi unutma' : "Don't forget to follow us"}</h3>
                             <ul className="social-icons">
                                 {/* <a target={'_blank'} rel="noreferrer" href={data.fb}><li><img src={fb} alt="Facebook icon" /></li></a>
                                 <a target={'_blank'} rel="noreferrer" href={data.instagram}><li><img src={insta} alt="Instagram Icon" /></li></a>
@@ -141,8 +141,8 @@ function Footer() {
             </div>
             <div className="home-news-row justify-content-start footer-wrap">
                 <div className='copyright-item'>copyright@Daşkəsən Dəmir Filizi</div>
-                <div className='copyright-item'>{lang === 'az' ? 'Bütün hüquqlar qorunur' : 'All rights reserved'}</div>
-                <a href='https://www.butagrup.com.tr/' rel="noreferrer" target='_blank' className='copyright-item'>{lang === 'az' ? 'Buta Grup tərəfindən hazırlanmışdır' : 'Site by Buta Grup'}</a>
+                <div className='copyright-item'>{!lang ? 'Bütün hüquqlar qorunur' : 'All rights reserved'}</div>
+                <a href='https://www.butagrup.com.tr/' rel="noreferrer" target='_blank' className='copyright-item'>{!lang ? 'Buta Grup tərəfindən hazırlanmışdır' : 'Site by Buta Grup'}</a>
             </div>
         </>
     );

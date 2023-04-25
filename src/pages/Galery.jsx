@@ -4,10 +4,17 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { useSelector } from "react-redux";
 import '../assets/css/Galery.css';
+import { useEffect } from "react";
+import { useState } from "react";
 
 const Galery = () => {
     const lang = useSelector(state => state.langReducer.lang);
     const { pathname } = useLocation();
+
+    // useEffect(() => {
+    //     const active = document.getElementById("active");
+    //     setNavTitle(active);
+    // }, [pathname]);
 
     const handleVideoGalery = (e) => {
         // setGaleryText(e.target.innerText);
@@ -18,14 +25,14 @@ const Galery = () => {
         <>
         <div className="heading-all">
             <div className="container heading-all-container header-bg-respon">
-            <Navbar title={lang === 'az' ? 'Qalereya' : 'Gallery'} />
+            <Navbar title={!lang ? 'Qalereya' : 'Gallery'} />
             </div>
         </div>
         <div className="galery">
             <div className="container galery-container">
             <div className="row galery-row">
                 <div className="galery-header">
-                <h3 style={{ marginTop: "15px" }}>{lang === 'az' ? 'Qalereya' : 'Gallery'} </h3>
+                <h3 style={{ marginTop: "15px" }}>{!lang ? 'Qalereya' : 'Gallery'} </h3>
                 <div className="galery-tabs">
                     <Link
                         to="photos"
@@ -35,7 +42,7 @@ const Galery = () => {
                             pathname === '/media/gallery/photos' ? 'galery-link active' : 'galery-link'
                         }
                     >
-                      {lang === 'az' ? 'Foto Qalereya' : 'Photo Gallery'}
+                      {!lang ? 'Foto Qalereya' : 'Photo Gallery'}
                     </Link>
                     <Link
                         to="videos"
@@ -45,7 +52,7 @@ const Galery = () => {
                             pathname === '/media/gallery/videos' ? 'galery-link active' : 'galery-link'
                         }
                     >
-                     {lang === 'az' ? 'Video Qalereya' : 'Video Gallery'}
+                     {!lang ? 'Video Qalereya' : 'Video Gallery'}
                     </Link>
                 </div>
                 <Outlet />

@@ -5,22 +5,26 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import rehberlikSag from "../img/rehberlik-sag.png";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
 const Manage = () => {
   // Context api-dəki qlobal state-lər
-  // const {contextData , setContextData , lang} = useContext(GlobalContext);
 
   const lang = useSelector(state => state.langReducer.lang);
   const { pathname } = useLocation();
-  
+  const [navTitle,setNavTitle] = useState("");
 
   const a = document.querySelector('.links-div.active');
 
   // Tablara kliklənən zaman uyğun linkin innerText-nin Context APİ-ə göndərilməsi 
   const handleCclick = (e) => {
     // setContextData(e.target.innerText);
-    window.localStorage.setItem('aboutText', e.target.innerText);
   };
+
+  useEffect(() => {
+    const active = document.getElementById('active');
+    setNavTitle(active.innerText);
+  }, [pathname]);
 
   // Tablara kliklənən zaman uyğun linkin aktivliyinin təmin edilməsi 
   useEffect(() => {
@@ -39,7 +43,7 @@ const Manage = () => {
     <>
       <div className="heading-all">
         <div className="container heading-all-container header-bg-respon">
-          <Navbar title={a?.innerText} />
+          <Navbar title={navTitle} />
         </div>
       </div>
       <img
@@ -63,85 +67,81 @@ const Manage = () => {
             data-aos-duration="1000"
           >
             <div 
-            // className={`links-div ${(contextData === 'Tariximiz' || contextData === 'History') ? 'active' : ''}`} 
             onClick={handleCclick}
             >
-              <Link to="history" className={pathname === '/about/history' ? 'my-link-class active' :'my-link-class'} type="button">
+              <Link to="history" id={pathname === '/about/history' ? "active" : ""} className={pathname === '/about/history' ? 'my-link-class active' :'my-link-class'} type="button">
                 {!lang ? 'Tariximiz' : 'History'}
               </Link>
             </div>
             <div 
-              // className={`links-div ${(contextData === 'Missiya və Hədəflərimiz' || contextData === 'Mission and Vision') ? 'active' : ''}`} 
               onClick={handleCclick}
               >
               <Link
                 to="mission-vision"
                 className={pathname === '/about/mission-vision' ? 'my-link-class active' :'my-link-class'}
                 type="button"
-                
+                id={pathname === '/about/mission-vision' ? "active" : ""}
               >
                 {!lang ? 'Missiya və Hədəflərimiz' : 'Mission and Vision'}
               </Link>
             </div>
             <div 
-              // className={`links-div  ${(contextData === 'Rəhbərlik' || contextData === 'Management') ? 'active' : ''}`} 
               onClick={handleCclick}
             >
               <Link
                 to="management"
                 className={pathname === '/about/management' ? 'my-link-class active' :'my-link-class'}
                 type="button"
+                id={pathname === '/about/management' ? "active" : ""}
               >
                 {!lang ? 'Rəhbərlik ' : 'Management'}
               </Link>
             </div>
             <div 
-              // className={`links-div  ${(contextData === 'Müşahidə Şurası' || contextData === 'Supervisory Board') ? 'active' : ''}`} 
               onClick={handleCclick}
             >
               <Link
                 to="supervisory"
                 className={pathname === '/about/supervisory' ? 'my-link-class active' :'my-link-class'}
                 type="button"
+                id={pathname === '/about/supervisory' ? "active" : ""}
               >
                 {!lang ? 'Müşahidə Şurası' : 'Supervisory Board'}
               </Link>
             </div>
 
             <div 
-              // className={`links-div  ${(contextData === 'Maliyyə və Audit' || contextData === 'Finance and Audit') ? 'active' : ''}`} 
               onClick={handleCclick}
             >
               <Link
                 to="audit"
                 className={pathname === '/about/audit' ? 'my-link-class active' :'my-link-class'}
                 type="button"
+                id={pathname === '/about/audit' ? "active" : ""}
               >
                 {!lang ? 'Maliyyə və Audit' : 'Finance and Audit'}
               </Link>
             </div>
             <div 
-            // className={`links-div ${(contextData === 'Struktur' || contextData === 'Structure') ? 'active' : ''}`} 
             onClick={handleCclick}
             >
               <Link
                 to="structure"
                 className={pathname === '/about/structure' ? 'my-link-class active' :'my-link-class'}
                 type="button"
-                
+                id={pathname === '/about/structure' ? "active" : ""}
               >
                 {!lang ? 'Struktur ' : 'Structure'}
               </Link>
             </div>
             <div 
-              // className={`links-div ${(contextData === 'Qanunvericilik' || contextData === 'Legislation') ? 'active' : ''}`} 
               onClick={handleCclick}
             >
               <Link
                 to="legislation"
                 className={pathname === '/about/legislation' ? 'my-link-class active' :'my-link-class'}
                 type="button"
-                
+                id={pathname === '/about/legislation' ? "active" : ""}
               >
                 {!lang ? 'Qanunvericilik ' : 'Legislation'}
               </Link>

@@ -1,33 +1,34 @@
 import React, { Suspense, useState } from "react";
 import "./style.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../../img/logo.png";
 import logo_en from '../../img/logo_en.png';
 import { useDispatch, useSelector } from "react-redux";
 import { langSliceAction } from "../../store/lang-slice";
 import search from '../../img/search.png';
 import { searchSliceAction } from "../../store/search-slice";
+import { useEffect } from "react";
 
 function Navbar(props) {
   const lang = useSelector(state => state.langReducer.lang);
   const dispatch = useDispatch();
   const [menu,setMenu] = useState(false);
   const [searchIcon,setSearchIcon] = useState(false);
+  const [navTitle,setNavTitle] = useState("");
+  const { pathname } = useLocation();
+
 
   // Axtarılan məlumatın innerText-nin qlobal state-ə atılması 
   const getSearchValue = (e) =>{
     const searcInput = document.querySelector('.search-input')
     window.localStorage.setItem('searchText',searcInput.value);
-    // setSearchData(searcInput.value);
     dispatch(searchSliceAction.getAllStructure(searcInput.value));
   }
 
   // Menu itemlərə kliklənən zaman onların innerText-nin qlobal state-ə atılması
   const getContextData = (e) => {
-    // setContextData(e.target.innerText); 
     document.querySelector(".responsive-menu").style.top = "-100vh";
     setMenu(true);
-    window.localStorage.setItem('aboutText', e.target.innerText);
   };
 
   const handleGaleryContext = (e) => {
@@ -40,6 +41,11 @@ function Navbar(props) {
     window.localStorage.setItem('lang', lang ? false : true);
     window.location.reload();
   }
+
+  useEffect(() => {
+    const active = document.getElementById('active');
+    setNavTitle(active?.innerText);
+  }, []);
 
   // Dil dəyişməsi zammanı hansı dil olduğunu yoxlayan funksiya
 
@@ -95,7 +101,7 @@ function Navbar(props) {
             </svg></button>
             <ul className="menu-list">
               <li className="main-page-li">
-                <Link to="/">
+                <Link to="/" id={pathname === "/" ? "active" : ""}>
                   {!lang ? "Ana Səhifə" : 'Home Page'}
                 </Link>
               </li>
@@ -160,6 +166,7 @@ function Navbar(props) {
                 <div className="drop-menu">
                   <Link
                     to="/mines"
+                    id={pathname === "/mines" ? "active" : ""}
                   >
                     {!lang ? "Yataqlar" : 'Mines'}
                   </Link>
@@ -173,17 +180,20 @@ function Navbar(props) {
               <li className="nav-item-custom">
                 <Link
                   to="/purchase"
+                  id={pathname === "/purchase" ? "active" : ""}
                 >
                   {!lang ? "Satınalma" : 'Procurement'}
                 </Link>
                 <div className="drop-menu">
                   <Link
                     to="/purchase/purchase-announce"
+                    id={pathname === "/purchase/purchase-announce" ? "active" : ""}
                   >
                     {!lang ? "Satınalma Elanları" : 'Procurement Announcements'}
                   </Link>
                   <Link
                     to="/purchase/purchase-archive"
+                    id={pathname === "/purchase/purchase-archive" ? "active" : ""}
                   >
                     {!lang ? "Satınalma Arxivi" : 'Procurement Archive'}
                   </Link>
@@ -192,18 +202,21 @@ function Navbar(props) {
               <li className="nav-item-custom">
                 <Link
                   to="/media"
+                  id={pathname === "/media" ? "active" : ""}
                 >
                   {!lang ? "Media" : 'Media'}
                 </Link>
                 <div className="drop-menu">
                   <Link
                     to="/media/news"
+                    id={pathname === "/media/news" ? "active" : ""}
                   >
                     {!lang ? "Xəbərlər" : 'News'}
                   </Link>
                   <Link
                     to="/media/gallery/photos"
                     onClick={handleGaleryContext}
+                    id={pathname === "/media/gallery/photos" ? "active" : ""}
                   >
                     {!lang ? "Qalereya" : 'Gallery'}
                   </Link>
@@ -212,17 +225,20 @@ function Navbar(props) {
               <li className="nav-item-custom">
                 <Link
                   to="/career"
+                  id={pathname === "/career" ? "active" : ""}
                 >
                   {!lang ? "Karyera" : 'Career'}
                 </Link>
                 <div className="drop-menu">
                   <Link
                     to="/vacancies"
+                    id={pathname === "/vacancies" ? "active" : ""}
                   >
                     {!lang ? "Vakansiyalar" : 'Vacancies'}
                   </Link>
                   <Link
                     to="/apply"
+                    id={pathname === "/apply" ? "active" : ""}
                   >
                     {!lang ? "Müraciət" : 'Apply'}
                   </Link>
@@ -231,6 +247,7 @@ function Navbar(props) {
               <li className="nav-item-custom">
                 <Link
                   to="/contact"
+                  id={pathname === "/contact" ? "active" : ""}
                 >
                   {!lang ? "Əlaqə  " : 'Contact'}
                 </Link>
@@ -252,7 +269,7 @@ function Navbar(props) {
         </nav>
       </div>
       <div className="container heading-all-container">
-        <p className="heading-title">{props.title}</p>
+        <p className="heading-title">{navTitle}</p>
       </div> 
       <form action="/search" className="search-form">
         <input onChange={getSearchValue} type="text" className="search-input" placeholder="Axtarış..." />

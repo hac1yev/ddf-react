@@ -37,7 +37,7 @@ const Project = () => {
     <>
       <div className="heading-all">
         <div className="container heading-all-container header-bg-respon">
-          <Navbar title={lang === 'az' ? 'Yataqlar' : 'Mines'} />
+          <Navbar title={!lang ? 'Yataqlar' : 'Mines'} />
         </div>
       </div>
       <div className="projects">
@@ -46,11 +46,11 @@ const Project = () => {
             <div className="col-12">
               <nav>
                 <ul className="project-detail-heading-link">
-                  <Link to={"/"}>{lang === 'az' ? 'Ana Səhifə' : 'Main Page'}</Link>
+                  <Link to={"/"}>{!lang ? 'Ana Səhifə' : 'Main Page'}</Link>
                   <span style={{ marginLeft: "10px", marginRight: "10px" }}>
                     &#8725;
                   </span>
-                  <li>{lang === 'az' ? 'Yataqlar' : 'Mines'}</li>
+                  <li>{!lang ? 'Yataqlar' : 'Mines'}</li>
                 </ul>
               </nav>
             </div>
