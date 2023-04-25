@@ -1,43 +1,55 @@
 import { Link } from 'react-router-dom';
 import "./style.css";
 import btn from "../../img/subscribebtn.svg";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useState,useEffect } from 'react';
+import fb from "../../img/fb.svg";
+import insta from "../../img/insta.svg";
+import linkedin from "../../img/in.svg";
+import { fetchData } from '../../assets/api/dataFetching';
+import { socialSliceAction } from '../../store/social-slice';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 
 function Footer() {
     const lang = useSelector(state => state.langReducer.lang);
 
     // const { setContextData , setGaleryText, data , setData , lang  } = useContext(GlobalContext);
-    // const [loading, setLoading] = useState(true);
-    // const [error, setError] = useState(null);
+    const data = useSelector(state => state.socialReducer.socialMedias);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const dispatch = useDispatch();
+
     const clickEvent = (e) => {
         window.scrollTo(0, 0);
         // setContextData(e.target.innerText);
         window.localStorage.setItem('aboutText', e.target.innerText);
     }
-    // const [email, setEmail] = useState("");
-    // let postData = new FormData();
-    // postData.append('email',email);
-  
+    const [email, setEmail] = useState("");
+    let postData = new FormData();
+    postData.append('email',email);
   
     // Formdan-data çəkmək üçün lazım olacaq
-    // let handleSubmit = async (e) => {
-    //   e.preventDefault();
-    //   axios.post(`http://api-ddf.asdfghjkl.gov.az/api/${lang}/email`, postData)
-    //   .then(function (response) {
-    //     Swal.fire(
-    //         `${!lang ? 'Abunə Olundu': 'Subscribed'}`,
-    //         '',
-    //         'success'
-    //       )
-    //   })
-    //   .catch(function (error) {
-    //     Swal.fire({
-    //         icon: 'error',
-    //         title:`${!lang ? 'Xəta Baş Verdi': 'An Error Occurred'}`,
-    //         text: ''
-    //       })
-    //   });
-    // };
+    let handleSubmit = async (e) => {
+      e.preventDefault();
+      axios.post(`http://api-ddf.asdfghjkl.gov.az/api/${lang}/email`, postData)
+      .then(function (response) {
+        Swal.fire(
+            `${!lang ? 'Abunə Olundu': 'Subscribed'}`,
+            '',
+            'success'
+          )
+      })
+      .catch(function (error) {
+        Swal.fire({
+            icon: 'error',
+            title:`${!lang ? 'Xəta Baş Verdi': 'An Error Occurred'}`,
+            text: ''
+          })
+      });
+
+      setEmail("");
+    };
 
 
     const handleClick = () => {
@@ -45,10 +57,9 @@ function Footer() {
         // setGaleryText('Foto Qalereya');
     };
 
-
-    //   useEffect(() =>{
-    //     fetchData('az/socicalMedia').then(data => setData(data.data[0]))
-    //   },[setData])
+    useEffect(() =>{
+    fetchData('az/socicalMedia').then(data => dispatch(socialSliceAction.getAllSocial(data.data[0])));
+    },[dispatch]);
 
 
     return (
@@ -110,12 +121,12 @@ function Footer() {
                             <h3>{!lang ? 'Bildirişləri əldə et' : 'Get notifications'}</h3>
                             <div className="suscribe">
                                 <form 
-                                    // onSubmit={handleSubmit} 
+                                    onSubmit={handleSubmit} 
                                     method="POST" 
                                 >
                                     <input 
-                                        // value={email} 
-                                        // onChange={(e) => setEmail(e.target.value)} 
+                                        value={email} 
+                                        onChange={(e) => setEmail(e.target.value)} 
                                         type="email" name="sub_email" 
                                         id="sub_email" 
                                         placeholder={!lang ? "E-mail ünvanınızı daxil edin" : "Enter your email adress"} 
@@ -130,9 +141,9 @@ function Footer() {
                         <div className="footer-social-media">
                             <h3>{!lang ? 'Bizi izləməyi unutma' : "Don't forget to follow us"}</h3>
                             <ul className="social-icons">
-                                {/* <a target={'_blank'} rel="noreferrer" href={data.fb}><li><img src={fb} alt="Facebook icon" /></li></a>
+                                <a target={'_blank'} rel="noreferrer" href={data.fb}><li><img src={fb} alt="Facebook icon" /></li></a>
                                 <a target={'_blank'} rel="noreferrer" href={data.instagram}><li><img src={insta} alt="Instagram Icon" /></li></a>
-                                <a target={'_blank'} rel="noreferrer" href={data.linkedin}><li><img src={linkedin} alt="Linkedin icon" /></li></a> */}
+                                <a target={'_blank'} rel="noreferrer" href={data.linkedin}><li><img src={linkedin} alt="Linkedin icon" /></li></a>
                                 {/* <a href='#' style={{ pointerEvents: 'none' }} ><li><img src={yt} alt="Youtube Icon" /></li></a> */}
                             </ul>
                         </div>

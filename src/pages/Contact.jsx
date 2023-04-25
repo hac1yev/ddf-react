@@ -72,8 +72,6 @@ const Contact = () => {
     fetchData('az/socicalMedia').then(data => setSocialData(data.data[0]))
   },[lang])
 
-
-
   return (
     <div>
       <div className="heading-all">

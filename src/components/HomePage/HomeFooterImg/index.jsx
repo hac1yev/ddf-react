@@ -16,9 +16,6 @@ const HomeFooterImg = () => {
         .then((data) => setSlideData(data.data));
     },[lang])
 
-
-
-
     const settings = {
         dots: false,
         infinite: true,
@@ -56,9 +53,6 @@ const HomeFooterImg = () => {
     return (
         <div className="footer-img-parent">
             <Slider className="home-slick-wrapper" {...settings}>
-
-
-
                 {slideData.map((slide) =>
                     <a href={slide.url} target='_blank' rel="noreferrer" key={slide.id} className="footer-img-child">
                         <img src={slide.img} alt="Heydar Əliyev" />
