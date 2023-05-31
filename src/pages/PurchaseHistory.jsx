@@ -63,7 +63,7 @@ const PurchaseHistory = () => {
     <>
       <div className="heading-all">
         <div className="container heading-all-container header-bg-respon">
-          <Navbar title={lang === 'az' ? 'Satınalma' : 'Procurement'} />
+          <Navbar title={!lang ? 'Satınalma arxivi' : 'Procurement history'} />
         </div>
       </div>
       <div className="announce">
@@ -74,14 +74,14 @@ const PurchaseHistory = () => {
               <nav>
                 <ul className="project-detail-heading-link">
                   <Link to={"/"} style={{ marginRight: "5px" }}>
-                    {lang === 'az' ? 'Ana Səhifə' : 'Main Page'}
+                    {!lang ? 'Ana Səhifə' : 'Main Page'}
                   </Link>
                   <span style={{ margin: "0 10px" }}>&#8725;</span>
                   <Link style={{ marginRight: "10px" }} to={"/purchase"}>
-                    {lang === 'az' ? 'Satınalma' : 'Procurement'}
+                    {!lang ? 'Satınalma' : 'Procurement'}
                   </Link>
                   <span style={{ margin: "0 10px" }}>&#8725;</span>
-                  <li style={{ color: '#000' }}>{lang === 'az' ? 'Satınalma Arxivi' : 'Procurement Archive' }</li>
+                  <li style={{ color: '#000' }}>{!lang ? 'Satınalma Arxivi' : 'Procurement Archive' }</li>
                 </ul>
               </nav>
             </div>
@@ -91,15 +91,15 @@ const PurchaseHistory = () => {
                 data-aos="flip-left"
                 data-aos-duration="1000"
               >
-                {lang === 'az' ? "Satınalma Arxivi" : "Procurement Archive"}
+                {!lang ? "Satınalma Arxivi" : "Procurement Archive"}
               </h2>
             </div>
             <div className="row my-4 w-100 mx-0 purchase-history-row">
             <div className="col-12 px-3">
                 <div className="purchase-history-table-header">
-                  <div className="purchase-history-competition-name">{lang === 'az' ? 'Müsabiqənin adı:' : 'Contest Name:'}</div>
-                  <div className="purchase-history-start">{lang === 'az' ? 'Başlama Tarixi:' : 'Start Date:'}</div>
-                  <div className="purchase-history-end">{lang === 'az' ? 'Son Müraciət Tarixi:' : 'End Date:'}</div>
+                  <div className="purchase-history-competition-name">{!lang ? 'Müsabiqənin adı:' : 'Contest Name:'}</div>
+                  <div className="purchase-history-start">{!lang ? 'Başlama Tarixi:' : 'Start Date:'}</div>
+                  <div className="purchase-history-end">{!lang ? 'Son Müraciət Tarixi:' : 'End Date:'}</div>
                 </div>
               </div>
             {currentRecords.map((item, index) => (

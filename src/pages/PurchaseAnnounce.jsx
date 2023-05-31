@@ -36,8 +36,6 @@ const PurchaseAnnounce = () => {
       fetchData(!lang ? `az/purchase` : `en/purchase`)
       .then(data => dispatch(purchSliceAction.getAllPurchs(data.data)));
     }, [lang,dispatch]);
-
-    console.log(purchaseData)
     
     // Request zamanı gələn dataları Satınalma Elanları və Satınalma Arxivi şəklində iki Array-e ayırır
     for(let key in purchaseData) {
@@ -64,7 +62,7 @@ const PurchaseAnnounce = () => {
     <>
       <div className="heading-all">
         <div className="container heading-all-container header-bg-respon">
-          <Navbar title={lang === 'az' ? 'Satınalma' : 'Procurement'} />
+          <Navbar title={!lang ? 'Satınalma elanları' : 'Procurement announces'} />
         </div>
       </div>
       <div className="announce">
@@ -75,14 +73,14 @@ const PurchaseAnnounce = () => {
               <nav>
                 <ul className="project-detail-heading-link">
                   <Link to={"/"} style={{ marginRight: "5px" }}>
-                    {lang === 'az' ? 'Ana Səhifə' : 'Main Page'}
+                    {!lang ? 'Ana Səhifə' : 'Main Page'}
                   </Link>
                   <span style={{ margin: "0 10px" }}>&#8725;</span>
                   <Link style={{ marginRight: "10px" }} to={"/purchase"}>
-                    {lang === 'az' ? 'Satınalma' : 'Procurement'}
+                    {!lang ? 'Satınalma' : 'Procurement'}
                   </Link>
                   <span style={{ margin: "0 10px" }}>&#8725;</span>
-                  <li style={{ color: '#000' }}>{lang === 'az' ? 'Satınalma Elanları' : 'Procurement Announcements'}</li>
+                  <li style={{ color: '#000' }}>{!lang ? 'Satınalma Elanları' : 'Procurement Announcements'}</li>
                 </ul>
               </nav>
             </div>
@@ -92,15 +90,15 @@ const PurchaseAnnounce = () => {
                 data-aos="flip-left"
                 data-aos-duration="1000"
               >
-                {lang === 'az' ? 'Satınalma Elanları' : 'Procurement Announcements'}
+                {!lang ? 'Satınalma Elanları' : 'Procurement Announcements'}
               </h2>
             </div>
             <div className="row my-4 w-100 mx-0 purchase-announce-row">
               <div className="col-12 px-1">
                 <div className="purchase-announce-table-header">
-                  <div className="purchase-announce-competition-name">{lang === 'az' ? 'Müsabiqənin adı:' : 'Contest Name:'}</div>
-                  <div className="purchase-announce-start">{lang === 'az' ? 'Başlama Tarixi:' : 'Start Date:'}</div>
-                  <div className="purchase-announce-end">{lang === 'az' ? 'Son Müraciət Tarixi:' : 'End Date:'}</div>
+                  <div className="purchase-announce-competition-name">{!lang ? 'Müsabiqənin adı:' : 'Contest Name:'}</div>
+                  <div className="purchase-announce-start">{!lang ? 'Başlama Tarixi:' : 'Start Date:'}</div>
+                  <div className="purchase-announce-end">{!lang ? 'Son Müraciət Tarixi:' : 'End Date:'}</div>
                 </div>
               </div>
             {currentRecords.map((item, index) => (
@@ -129,13 +127,13 @@ const PurchaseAnnounce = () => {
                     </div>
                     <div className="purch-right-side">
                       <div className="purch-right-side-1">
-                        <span className="start-date">{lang === 'az' ? 'Başlama Tarixi:' : 'Start Date'}</span>
+                        <span className="start-date">{!lang ? 'Başlama Tarixi:' : 'Start Date'}</span>
                         <span className="purchase-announce-start-date">
                           {item.start_date}
                         </span>
                       </div>
                       <div className="purch-right-side-2">
-                        <span className="end-date">{lang === 'az' ? 'Son Müraciət Tarixi:' : 'End Date'}</span>
+                        <span className="end-date">{!lang ? 'Son Müraciət Tarixi:' : 'End Date'}</span>
                         <span className="purchase-announce-end-date">
                         {item.end_date}
                         </span>

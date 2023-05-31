@@ -34,7 +34,7 @@ const VacancyArchive = () => {
         <>
             <div className="heading-all">
                 <div className="container heading-all-container header-bg-respon">
-                    <Navbar title={lang === "az" ? "Vakansiya Arxivi" : "Vacancy Archive"} />
+                    <Navbar title={!lang ? "Vakansiya Arxivi" : "Vacancy Archive"} />
                 </div>
             </div>
             <div className="container vacancy-archive-container">

@@ -26,6 +26,7 @@ const Manage = () => {
     setNavTitle(active.innerText);
   }, [pathname]);
 
+
   // Tablara kliklənən zaman uyğun linkin aktivliyinin təmin edilməsi 
   useEffect(() => {
     const linksButton = document.querySelectorAll(".links-div");
@@ -38,6 +39,7 @@ const Manage = () => {
       });
     });
   }, []);
+  
 
   return (
     <>
@@ -82,7 +84,7 @@ const Manage = () => {
                 type="button"
                 id={pathname === '/about/mission-vision' ? "active" : ""}
               >
-                {!lang ? 'Missiya və Hədəflərimiz' : 'Mission and Vision'}
+                {!lang ? 'Dəyər və Hədəflərimiz' : 'Values and Vision'}
               </Link>
             </div>
             <div 

@@ -26,7 +26,7 @@ const Career = () => {
     <>
       <div className="heading-all">
         <div className="container heading-all-container header-bg-respon">
-          <Navbar title={lang === 'az' ? 'Karyera' : 'Career'} />
+          <Navbar title={!lang ? 'Karyera' : 'Career'} />
         </div>
       </div>
       <div className="careers">
@@ -49,7 +49,7 @@ const Career = () => {
               data-aos-duration="500"
             >
             <img src={muraciet} alt="" />
-              <p className="link-p">{lang === 'az' ? 'Müraciət' : 'Apply'}</p>
+              <p className="link-p">{!lang ? 'Müraciət' : 'Apply'}</p>
             </div>
           </Link>
           <Link onClick={() => window.scrollTo(0,0)} className="career-item-link2" exact to="/vacancies">
@@ -61,7 +61,7 @@ const Career = () => {
             >
             <img src={vakansiya} alt="" />
               <p className="link-p">{
-                lang === 'az' ? 'Vakansiyalar' : 'Vacancies'
+                !lang ? 'Vakansiyalar' : 'Vacancies'
               }</p>
             </div>
           </Link>

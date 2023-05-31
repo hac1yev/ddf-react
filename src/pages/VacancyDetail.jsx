@@ -32,17 +32,27 @@ const VacancyDetail = () => {
   const [cvName,setCvName] = useState('');
   const [errorCv,setErrorCv] = useState(false);
 
-  console.log(vacancyData)
-
-  // Vakansiya Detal səhifəsindəki digər vakansiyaların limitli şəkildə göstərilməsi
-  const n = 6;
-  const vacancyDetailOtherItems = vacancyData.slice(-n);
-
   // Uyğun vakansiyanın İD-si 
   const {vacancyId} = useParams();
 
   // Ümumi vakansiyalar içində seçilmiş vakansiyanın İD-sinə görə tapılması
   
+  let vacancyAnnounceData = [];
+
+  // Request zamanı gələn dataları Vakansiya Elanları və Vakansiya Arxivi şəklində iki Array-e ayırır
+  for (const key in vacancyData) {
+    if (vacancyData[key].archive === 0) {
+      vacancyAnnounceData.push({ ...vacancyData[key] });
+    }
+  }
+
+  // Vakansiya Detal səhifəsindəki digər vakansiyaların limitli şəkildə göstərilməsi
+  const n = 6;
+  const vacancyDetailOtherItems = vacancyAnnounceData.slice(-n);
+
+  let filteredOtherItems = vacancyDetailOtherItems.filter((item) => item.id !== Number(vacancyId));
+
+  console.log(filteredOtherItems);
 
   useEffect(() => {
     fetchData(!lang ? `az/vacancies` : `en/vacancies`)
@@ -82,7 +92,7 @@ const VacancyDetail = () => {
       axios.post(`http://api-ddf.asdfghjkl.gov.az/api/${lang}/apply-vacancyid`, data)
       .then(function (response) {
         Swal.fire(
-          `${lang === 'az' ? 'Mesajınız Göndərildi': 'Your Message Has Been Sent'}`,
+          `${!lang ? 'Mesajınız Göndərildi': 'Your Message Has Been Sent'}`,
           '',
           'success'
         )
@@ -90,7 +100,7 @@ const VacancyDetail = () => {
       .catch(function (error) {
         Swal.fire({
           icon: 'error',
-          title:`${lang === 'az' ? 'Xəta Baş Verdi': 'An Error Occurred'}`,
+          title:`${!lang ? 'Xəta Baş Verdi': 'An Error Occurred'}`,
           text: ''
         })
       });
@@ -107,7 +117,7 @@ const VacancyDetail = () => {
     <div>
       <div className="heading-all">
         <div className="container heading-all-container header-bg-respon">
-          <Navbar title={lang === 'az' ? 'Vakansiyalar' : 'Vacancies'} />
+          <Navbar title={!lang ? 'Vakansiyalar' : 'Vacancies'} />
         </div>
       </div>
       <div className="vacancy-detail">
@@ -124,7 +134,7 @@ const VacancyDetail = () => {
                 <h2 className="vacancy-detail-title">{vacancyDetailData.name}</h2>
 
                 <h6 className="vacancy-detail-work-information">
-                  {lang === 'az' ? 'İş barədə məlumat' : 'Information about job'}
+                  {!lang ? 'İş barədə məlumat' : 'Information about job'}
                 </h6>
                 <div 
                   className="vacancy-detail-description"
@@ -153,7 +163,7 @@ const VacancyDetail = () => {
                 </div>
                 <div className="row mb-3">
                   <div className="col-7 pe-0 mt-3 mb-3" style={{ fontWeight: "700" }}>
-                    {lang === 'az' ? 'Yerləşdirilmə tarixi' : 'Posting date'}
+                    {!lang ? 'Yerləşdirilmə tarixi' : 'Posting date'}
                   </div>
                   <div
                     className="col-5 pe-0  mt-3"
@@ -162,7 +172,7 @@ const VacancyDetail = () => {
                     {vacancyDetailData.start_date}
                   </div>
                   <div className="col-7 pe-0" style={{ fontWeight: "700" }}>
-                    {lang === 'az' ? 'Bitmə tarixi' : 'Deadline'}
+                    {!lang ? 'Bitmə tarixi' : 'Deadline'}
                   </div>
                   <div
                     className="col-5 pe-0"
@@ -173,14 +183,14 @@ const VacancyDetail = () => {
                 </div>
                 <div className="vacancy-detail-appeal-button">
                   {!isSend ? (
-                    <button onClick={() => setIsSend(true)}>{lang === 'az' ? 'MÜRACİƏT ET' : 'Apply'} </button>
+                    <button onClick={() => setIsSend(true)}>{!lang ? 'MÜRACİƏT ET' : 'Apply'} </button>
                   ) : (
                     <form onSubmit={handleSubmit} className="vacancy-detail-form">
                       <div className="row">
                         <div className="col-6">
                           <input
                             type="text"
-                            placeholder={lang === 'az' ? 'Ad' : 'Name'}
+                            placeholder={!lang ? 'Ad' : 'Name'}
                             style={{ width: "100%" }}
                             required
                             value={name}
@@ -190,7 +200,7 @@ const VacancyDetail = () => {
                         <div className="col-6">
                           <input
                             type="text"
-                            placeholder={lang === 'az' ? 'Soyad' : 'Surname'}
+                            placeholder={!lang ? 'Soyad' : 'Surname'}
                             style={{ width: "100%" }}
                             required
                             value={surname}
@@ -200,7 +210,7 @@ const VacancyDetail = () => {
                         <div className="col-12">
                           <textarea
                             rows="6"
-                            placeholder={lang === 'az' ? 'Məlumat' : 'İnformation'}
+                            placeholder={!lang ? 'Məlumat' : 'İnformation'}
                             style={{ width: "100%" }}
                             required
                             value={message}
@@ -210,7 +220,7 @@ const VacancyDetail = () => {
                       </div>
                       <div className="form-group">
                         <label htmlFor="file-upload" className="custom-file-upload">
-                          {cvName ? cvName : (lang === 'az' ? 'CV Yüklə' : 'Upload CV')}{" "}
+                          {cvName ? cvName : (!lang ? 'CV Yüklə' : 'Upload CV')}{" "}
                           <svg
                             className="vacancy-detail-file-upload"
                             viewBox="0 0 15 16"
@@ -241,9 +251,9 @@ const VacancyDetail = () => {
                           </svg>
                         </label>
                         <input id="file-upload" type="file" accept="application/pdf" onChange={handleFileChange}/>
-                        {errorCv && <p className="error">{lang === 'az' ? 'Xaiş edirik CV-nizi daxil edin!' : 'Please enter your CV!'}</p>}
+                        {errorCv && <p className="error">{!lang ? 'Xaiş edirik CV-nizi daxil edin!' : 'Please enter your CV!'}</p>}
                       </div>
-                      <button style={{ marginTop: '10px' }}>{lang === 'az' ? 'GÖNDƏR' : 'SEND'}</button>
+                      <button style={{ marginTop: '10px' }}>{!lang ? 'GÖNDƏR' : 'SEND'}</button>
                     </form>
                   )}
                 </div>
@@ -251,8 +261,8 @@ const VacancyDetail = () => {
             </div>
           </div>
           <div className="row vacancy-detail-row1">
-            <p style={{ fontSize: '32px', fontWeight: '600' }} className='mb-4'>{lang === 'az' ? 'Digər Vakansiyalar' : 'Other vacancies'}</p>
-            {vacancyDetailOtherItems.map((vacancyItem) => (
+            <p style={{ fontSize: '32px', fontWeight: '600' }} className='mb-4'>{!lang ? 'Digər Vakansiyalar' : 'Other vacancies'}</p>
+            {filteredOtherItems.map((vacancyItem) => (
               <div className="col-lg-4 col-md-6 mb-3" key={vacancyItem.id}>
                 <VacancyItems
                   id={vacancyItem.id}

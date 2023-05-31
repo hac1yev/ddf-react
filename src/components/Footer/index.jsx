@@ -69,7 +69,7 @@ function Footer() {
                             <span>{!lang ? 'HAQQIMIZDA' : 'ABOUT US'}</span>
                             <ul>
                                 <Link to="/about/history" onClick={clickEvent}><li>{!lang ? 'Tariximiz' : 'History'}</li></Link>
-                                <Link to="/about/mission-vision" onClick={clickEvent}><li>{!lang ? 'Missiya və Hədəflərimiz' : 'Mission and Vision'}</li></Link>
+                                <Link to="/about/mission-vision" onClick={clickEvent}><li>{!lang ? 'Dəyər və Hədəflərimiz' : 'Values and Vision'}</li></Link>
                                 <Link to="/about/management" onClick={clickEvent}><li>{!lang ? 'Rəhbərlik' : 'Management'}</li></Link>
                                 <Link to="/about/supervisory" onClick={clickEvent}><li>{!lang ? 'Müşahidə Şurası' : 'Supervisory Board'}</li></Link>
                                 <Link to="/about/structure" onClick={clickEvent}><li>{!lang ? 'Struktur' : 'Structure'}</li></Link>
@@ -79,8 +79,8 @@ function Footer() {
                         <li style={{ width: '122px' }}>
                             <span>{!lang ? 'SATINALMA' : 'PROCUREMENT'}</span>
                             <ul>
-                                <Link onClick={() => window.scrollTo(0, 0)} to="/purchase/purchase-announce"><li>{!lang ? 'Satınalma Elanları' : 'Procurement Announcements'}</li></Link>
-                                <Link onClick={() => window.scrollTo(0, 0)} to="/purchase/purchase-archive"><li>{!lang ? 'Satınalma Arxivi' : 'Procurement Archive'}</li></Link>
+                                <Link onClick={() => window.scrollTo(0, 0)} to="/purchase/purchase-announce"><li>{!lang ? 'Satınalma elanları' : 'Procurement announcements'}</li></Link>
+                                <Link onClick={() => window.scrollTo(0, 0)} to="/purchase/purchase-archive"><li>{!lang ? 'Satınalma arxivi' : 'Procurement archive'}</li></Link>
                             </ul>
                         </li>
                         <li>
@@ -91,7 +91,7 @@ function Footer() {
                             </ul>
                         </li>
                         <li>
-                            <span>{!lang ? 'MEDİA' : 'MEDİA'}</span>
+                            <span>{!lang ? 'MEDİA' : 'MEDIA'}</span>
                             <ul>
                                 <Link onClick={() => window.scrollTo(0, 0)} to="/media/news"><li>{!lang ? 'Xəbərlər' : 'News'}</li></Link>
                                 <Link onClick={handleClick} to="/media/gallery/photos"><li>{!lang ? 'Qalereya' : 'Gallery'}</li></Link>
@@ -108,7 +108,7 @@ function Footer() {
                         <li>
                             <span>{!lang ? 'ƏLAQƏ' : 'CONTACT'}</span>
                             <ul>
-                                <Link to="#"><li>xxx-xxx-xxxxx</li></Link>
+                                <li>+994125857788</li>
                             </ul>
                         </li>
                     </ul>
@@ -149,7 +149,7 @@ function Footer() {
                 </div>
             </div>
             <div className="home-news-row justify-content-start footer-wrap">
-                <div className='copyright-item'>copyright@Daşkəsən Dəmir Filizi</div>
+                <div className='copyright-item'>{!lang ? 'copyright@Daşkəsən Dəmir Filizi' : 'copyright@Dashkasan Iron Ore'}</div>
                 <div className='copyright-item'>{!lang ? 'Bütün hüquqlar qorunur' : 'All rights reserved'}</div>
                 <a href='https://www.butagrup.com.tr/' rel="noreferrer" target='_blank' className='copyright-item'>{!lang ? 'Buta Grup tərəfindən hazırlanmışdır' : 'Site by Buta Grup'}</a>
             </div>

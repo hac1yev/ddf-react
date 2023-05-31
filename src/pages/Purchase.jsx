@@ -22,7 +22,7 @@ const Purchase = () => {
   useEffect(() => {
     fetchData(!lang ? `az/purchase` : `en/purchase`)
     .then(data => dispatch(purchSliceAction.getAllPurchs(data.data)));
-}, [lang,dispatch]);
+  }, [lang,dispatch]);
 
   // State
   const [isPurchHistoryOpen,setIsPurchHistoryOpen] = useState(false);
@@ -39,9 +39,9 @@ const Purchase = () => {
     }
   }
 
- useEffect(() => {
-  window.localStorage.setItem('purchaseData', JSON.stringify(descriptions));
- }, [descriptions]);
+  useEffect(() => {
+    window.localStorage.setItem('purchaseData', JSON.stringify(descriptions));
+  }, [descriptions]);
 
   // Satınalma səhifəsindəki məlumatların limitli şəkildə göstərilməsi
   const n = 8;
@@ -86,7 +86,7 @@ const Purchase = () => {
    <>
      <div className="heading-all">
        <div className="container heading-all-container header-bg-respon">
-         <Navbar title={lang === 'az' ? 'Satınalma' : 'Procurement'} />
+         <Navbar title={!lang ? 'Satınalma' : 'Procurement'} />
        </div>
      </div>
       <section className="purchase-section">
@@ -112,10 +112,10 @@ const Purchase = () => {
                     data-aos-duration="1000"
                     className="purchase-announce-header"
                 >
-                    <p>{lang === 'az' ? 'Satınalma elanları' : 'Procurement Announcements'}</p>
+                    <p>{!lang ? 'Satınalma elanları' : 'Procurement Announcements'}</p>
                 </div>
-                {purchDat.length === 0 ? <p style={{textAlign: 'center'}}>{lang === 'az' ? 'Hal-hazırda aktiv satınalma elanı mövcud deyildir.' : 'There is currently no active purchase ad.'}<br/>
-                        {lang === 'az' ? 'Satınalma elanlarının arxivi ilə' : 'With an archive of purchase announcements'} <Link className="empty-purch-link" to='/satinalma/satinalma-arxivi'>{lang === 'az' ? 'buradan' : 'from here  '}</Link>{lang === 'az' ? 'tanış ola bilərsiniz.' : 'you can meet.'}</p> : purchDat.map((item,index) => (
+                {purchDat.length === 0 ? <p style={{textAlign: 'center'}}>{!lang ? 'Hal-hazırda aktiv satınalma elanı mövcud deyildir.' : 'There is currently no active purchase ad.'}<br/>
+                        {!lang ? 'Satınalma elanlarının arxivi ilə' : 'With an archive of purchase announcements'} <Link className="empty-purch-link" to='/satinalma/satinalma-arxivi'>{!lang ? 'buradan' : 'from here  '}</Link>{!lang ? 'tanış ola bilərsiniz.' : 'you can meet.'}</p> : purchDat.map((item,index) => (
                     <Link
                         data-aos="zoom-in"
                         data-aos-anchor-placement="top-bottom"
@@ -143,7 +143,7 @@ const Purchase = () => {
                   className="text-left d-flex justify-content-end mt-2 purchase-announce-button"
                   to="/purchase/purchase-announce"
                 >
-                  {purchDat.length === 0 ? '' : <span>{lang === 'az' ? 'Daha çox...' : 'More...'}</span>}
+                  {purchDat.length === 0 ? '' : <span>{!lang ? 'Daha çox...' : 'More...'}</span>}
                 </Link>
                 <div className="purchase-history-wrapper">
                   <div
@@ -154,12 +154,12 @@ const Purchase = () => {
                   >
                       {isPurchHistoryOpen ? (
                       <div onClick={handleClose} className="purchase-history-header-button">
-                        <p>{lang === 'az' ? 'Satınalma arxivi' : 'Procurement Archive'}</p>
+                        <p>{!lang ? 'Satınalma arxivi' : 'Procurement Archive'}</p>
                         <img src={subtractUp} alt="subUp" />
                       </div>
                       ) : (
                       <div onClick={handleOpen} className="purchase-history-header-button">
-                        <p>{lang === 'az' ? 'Satınalma arxivi' : 'Procurement Archive'}</p>
+                        <p>{!lang ? 'Satınalma arxivi' : 'Procurement Archive'}</p>
                         <img src={subtractDown} alt="subDown" />
                       </div>
                       )}
@@ -193,7 +193,7 @@ const Purchase = () => {
                       to="/purchase/purchase-archive"
                       className="text-left d-flex justify-content-end mt-2 purchase-history-button"
                     >
-                      <span>{lang === 'az' ? 'Daha çox...' : 'More...'}</span>
+                      <span>{!lang ? 'Daha çox...' : 'More...'}</span>
                     </Link>
                   </>
                   )}

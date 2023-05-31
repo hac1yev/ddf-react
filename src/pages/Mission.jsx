@@ -34,7 +34,7 @@ const Mission = () => {
   return (
     <div className="col-lg-9 col-md-12 col-sm-12 misVis-wrapper">
       <div className="misVis-buttons">
-        <button className={`${isActive ? "mis-button accctive" : "mis-button"}`} onClick={handleMisActiveButton}>{!lang ? 'Missiyamız' : 'Mission'}</button>
+        <button className={`${isActive ? "mis-button accctive" : "mis-button"}`} onClick={handleMisActiveButton}>{!lang ? 'Dəyərlərimiz' : 'Our values'}</button>
         <button className={`${isActive ? "vis-button" : "vis-button accctive"}`} onClick={handleVisActiveButton}>{!lang ? 'Hədəflərimiz' : 'Vision'}</button>
       </div> 
       {isActive && 

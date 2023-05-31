@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
 import { useFormik } from "formik";
 import { contactSchema } from '../schema/contactSchema';
 import { useSelector } from "react-redux";
-
+import tel from "../img/tel.png";
 
 const Contact = () => {
 
@@ -90,12 +90,12 @@ const Contact = () => {
             <div className="contact-left-information">
               {contactData.map((item, i) => (
                 <div key={i}>
-                  <h1 className="contact-h1">{!lang ? 'Əlaqə məlumatları:' : 'Contact information:'}</h1>
-                  <p className="contact-details">{!lang ? 'Ünvan:' : 'Address:'} <b>{item.address}</b></p>
-                  <h1 className="contact-h1">{!lang ? 'Əlaqə nömrələri:' : 'Contact numbers:'}</h1>
+                  <h1 className="contact-h1">{lang === 'az' ? 'Əlaqə məlumatları:' : 'Contact information:'}</h1>
+                  <p className="contact-details">{lang === 'az' ? 'Ünvan:' : 'Address:'} <b>{item.address}</b></p>
+                  {/* <h1 className="contact-h1">{lang === 'az' ? 'Əlaqə nömrələri:' : 'Contact numbers:'}</h1> */}
                   {item.phone.map((i, index) => (
-                    <div key={index} style={{ display: 'flex', flexDirection: 'column', marginBottom: '10px' }}>
-                      <span className="contact-details">{i}</span>
+                    <div key={index} style={{ display: 'flex', gap: '10px', marginBottom: '10px' }}>
+                      <img src={tel} alt="" className="contact-img" /><span className="contact-details">{i}</span>
                     </div>
                   ))}
                 </div>

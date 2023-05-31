@@ -17,7 +17,6 @@ function Navbar(props) {
   const [navTitle,setNavTitle] = useState("");
   const { pathname } = useLocation();
 
-
   // Axtarılan məlumatın innerText-nin qlobal state-ə atılması 
   const getSearchValue = (e) =>{
     const searcInput = document.querySelector('.search-input')
@@ -42,10 +41,10 @@ function Navbar(props) {
     window.location.reload();
   }
 
-  useEffect(() => {
-    const active = document.getElementById('active');
-    setNavTitle(active?.innerText);
-  }, []);
+  // useEffect(() => {
+  //   const active = document.getElementById('active');
+  //   setNavTitle(active?.innerText);
+  // }, []);
 
   // Dil dəyişməsi zammanı hansı dil olduğunu yoxlayan funksiya
 
@@ -122,7 +121,7 @@ function Navbar(props) {
                     to="/about/mission-vision"
                     onClick={getContextData}
                   >
-                   {!lang ? "Missiya və Hədəflərimiz" : 'Mission and Vision'}
+                   {!lang ? "Dəyər və Hədəflərimiz" : 'Values and Vision'}
                   </Link>
                   <Link
                     to="/about/management"
@@ -189,13 +188,13 @@ function Navbar(props) {
                     to="/purchase/purchase-announce"
                     id={pathname === "/purchase/purchase-announce" ? "active" : ""}
                   >
-                    {!lang ? "Satınalma Elanları" : 'Procurement Announcements'}
+                    {!lang ? "Satınalma elanları" : 'Procurement announcements'}
                   </Link>
                   <Link
                     to="/purchase/purchase-archive"
                     id={pathname === "/purchase/purchase-archive" ? "active" : ""}
                   >
-                    {!lang ? "Satınalma Arxivi" : 'Procurement Archive'}
+                    {!lang ? "Satınalma arxivi" : 'Procurement archive'}
                   </Link>
                 </div>
               </li>
@@ -269,7 +268,7 @@ function Navbar(props) {
         </nav>
       </div>
       <div className="container heading-all-container">
-        <p className="heading-title">{navTitle}</p>
+        <p className="heading-title">{props.title}</p>
       </div> 
       <form action="/search" className="search-form">
         <input onChange={getSearchValue} type="text" className="search-input" placeholder="Axtarış..." />

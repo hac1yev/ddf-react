@@ -100,7 +100,7 @@ const Vacancy = () => {
     <>
       <div className="heading-all">
         <div className="container heading-all-container header-bg-respon">
-          <Navbar title={lang === "az" ? "Vakansiyalar" : "Vacancies"} />
+          <Navbar title={!lang ? "Vakansiyalar" : "Vacancies"} />
         </div>
       </div>
       <div className="vacancy">
@@ -136,7 +136,7 @@ const Vacancy = () => {
                       <input 
                         value={vacancyName} 
                         onChange={(e) => setVacancyName(e.target.value)} 
-                        placeholder={lang === 'az' ? "Vakansiya adı" : "Vacancy name"}
+                        placeholder={!lang ? "Vakansiya adı" : "Vacancy name"}
                       />
                     </div>
                     <div
@@ -147,7 +147,7 @@ const Vacancy = () => {
                     >
                       <input
                         onChange={(e) => setStartDate(e.target.value)}
-                        placeholder={lang === 'az' ? "Vakansiyanın başlama tarixi" : "Start date of vacancy"}
+                        placeholder={!lang ? "Vakansiyanın başlama tarixi" : "Start date of vacancy"}
                         type={inputType}
                         onFocus={handleFocus}
                         onBlur={handleBlur}
@@ -161,7 +161,7 @@ const Vacancy = () => {
                     >
                       <input
                         onChange={(e) => setEndDate(e.target.value)}
-                        placeholder={lang === 'az' ? "Vakansiyanın son müraciət tarixi" : "End date of vacancy"}
+                        placeholder={!lang ? "Vakansiyanın son müraciət tarixi" : "End date of vacancy"}
                         type={inputType2}
                         onFocus={handleFocus2}
                         onBlur={handleBlur2}
@@ -174,7 +174,7 @@ const Vacancy = () => {
                       data-aos-duration="500"
                     >
                       <button type="submit" className="vacancy-filter-button">
-                        {lang === "az" ? "Axtar" : "Search"}
+                        {!lang ? "Axtar" : "Search"}
                       </button>
                     </div>
                   </form>
@@ -212,7 +212,7 @@ const Vacancy = () => {
                 to={`/vacancies/vacancy-history`}
                 className="vacancy-items-history-button"
               >
-                {lang === "az" ? "Vakansiya Arxivi" : "Vacancy Archive"}
+                {!lang ? "Vakansiya Arxivi" : "Vacancy Archive"}
               </Link>
             </div>
             

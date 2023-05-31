@@ -27,11 +27,15 @@
     font-size: 15px;
     line-height: 20px;
     color: #fff;
-    margin-left: 20px;
+    /* margin-left: 20px; */
+}
+
+.contact-img{
+    width: 14px;
 }
 
 .social-link {
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .social-link ul {
@@ -74,9 +78,9 @@
     border-radius: 4px;
 }
 
-.form-group label {
+/* .form-group label {
     margin-top: 10px;
-}
+} */
 
 button.contact-send {
     font-family: Noto-Sans;
@@ -143,5 +147,5 @@ input[type=number] {
     padding: 19px 31px 24px 27px;
     display: flex;
     flex-direction: column;
-    gap: 72px;
+    gap: 20px;
 }

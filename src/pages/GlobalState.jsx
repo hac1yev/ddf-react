@@ -194,7 +194,6 @@ export const GlobalProvider = ({ children }) => {
 
       fetchData(`${lang}/mainImg`)
       .then((data) => setBackground(data.data));
-
     } , [lang])
 
     // Global State-lərin diger səhifələrdə işlədilməsi üçün export edilir

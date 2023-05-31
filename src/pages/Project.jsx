@@ -58,7 +58,7 @@ const Project = () => {
               <p className="projects-description" dangerouslySetInnerHTML={{__html : main_title.title}}>
               </p>
             </div>
-            {descriptions.map((item,index) => (
+            {/* {descriptions.map((item,index) => (
               <div className="col-md-6 d-flex align-item-center justify-content-center my-2">
                 <Link 
                   to={`/mines/${item.id}`} 
@@ -73,7 +73,23 @@ const Project = () => {
                   </div>
                 </Link>
               </div>
-            ))}
+            ))} */}
+            <div className="container pro-cont">
+              <div className="t-head row">
+                <div className="p-no col-md-1">№</div>
+                <div className="pr-name col-md-4">Yatağın adı</div>
+                <div className="pr-desc col-md-7">Məlumat</div>
+              </div>
+              {
+                descriptions.map((item,index) => (
+                  <div className="t-body row">
+                    <div className="p-dno col-md-1">{index+1}</div>
+                    <div className="pr-dname col-md-4" dangerouslySetInnerHTML={{__html: item.title}}></div>
+                    <div className="pr-ddesc col-md-7" dangerouslySetInnerHTML={{__html: item.description}}></div>
+                 </div>
+                ))
+              }
+            </div>
           </div>
         </div>
       </div>

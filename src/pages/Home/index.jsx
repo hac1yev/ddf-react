@@ -8,21 +8,28 @@ import Mine from "../../components/HomePage/Mine";
 import Navbar from "../../components/Navbar";
 import "./style.css";
 import loadingGif from '../../img/gif-ddf.gif'
+import { fetchData } from "../../assets/api/dataFetching";
+import { useSelector } from "react-redux";
 
 const Home = () => {
   // Preloader state-i
   const [loading, setLoading] = useState(false);
-  // const { background } = useContext(GlobalContext);
+  const [mainImg,setMainImg] = useState('');
 
+  const lang = useSelector(state => state.langReducer.lang);
 
   // Preloader-i 3 saniyə işlək vəziyyətdə saxlayan funksiya
   useEffect(() => {
-
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
     }, 3000);
   }, []);
+
+  useEffect(() => {
+    fetchData(!lang ? `az/mainImg` : `en/mainImg`)
+    .then((data) => setMainImg(data.data));
+  }, [lang]);
   
   return (
     <>
@@ -33,7 +40,7 @@ const Home = () => {
       ) : (
         <>
           <div className="App" 
-          // style={{backgroundImage: `url(${background.main_img})`}}
+          style={{backgroundImage: `url(${mainImg.main_img})`}}
           >
             <div style={{ height: '350px', background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50.06%)' }}>
               <Navbar />

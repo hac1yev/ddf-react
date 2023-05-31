@@ -17,8 +17,6 @@ const NewsDetail = () => {
 
   const dispatch = useDispatch();
 
-  console.log(newsDetailData)
-
   // State
   const [nav1, setNav1] = useState(null);
   const [nav2, setNav2] = useState(null);
@@ -43,8 +41,6 @@ const NewsDetail = () => {
     }
   }
 
-  console.log(slidesData);
-
   useEffect(() => {
     fetchData(!lang ? `az/news` : `en/news`)
     .then(data => dispatch(newsSliceAction.getNewsDetailItems({
@@ -52,7 +48,6 @@ const NewsDetail = () => {
       id: newsId,
     })))
   }, [newsId,lang,dispatch]);
-  console.log(newsDetailData.imgs.length)
 
   // Son 3 xəbərin get request zamanı əldə edilməsi 
   useEffect(() => {
@@ -72,7 +67,7 @@ const NewsDetail = () => {
   };
 
   const settingsThumbs = {
-    slidesToShow: newsDetailData.imgs.length > 4 ? 4 : newsDetailData.imgs.length - 1,
+    slidesToShow: newsDetailData.imgs.length > 4 ? 4 : (newsDetailData.imgs.length === 1 ? 1 : newsDetailData.imgs.length - 1),
     slidesToScroll: 1,
     asNavFor: '.slider-for',
     dots: false,
@@ -84,7 +79,7 @@ const NewsDetail = () => {
         {
           breakpoint: 1024,
           settings: {
-            slidesToShow: newsDetailData.imgs.length > 3 ? 3 : newsDetailData.imgs.length - 1,
+            slidesToShow: newsDetailData.imgs.length > 3 ? 3 : (newsDetailData.imgs.length === 1 ? 1 : newsDetailData.imgs.length - 1),
             slidesToScroll: 1,
             infinite: true,
             dots: true
@@ -93,7 +88,7 @@ const NewsDetail = () => {
         {
           breakpoint: 600,
           settings: {
-            slidesToShow: newsDetailData.imgs.length > 2 ? 2 : newsDetailData.imgs.length - 1,
+            slidesToShow: newsDetailData.imgs.length > 2 ? 2 : (newsDetailData.imgs.length === 1 ? 1 : newsDetailData.imgs.length - 1),
             slidesToScroll: 1,
             initialSlide: 1
           }
