@@ -7,14 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { langSliceAction } from "../../store/lang-slice";
 import search from '../../img/search.png';
 import { searchSliceAction } from "../../store/search-slice";
-import { useEffect } from "react";
 
 function Navbar(props) {
   const lang = useSelector(state => state.langReducer.lang);
   const dispatch = useDispatch();
   const [menu,setMenu] = useState(false);
   const [searchIcon,setSearchIcon] = useState(false);
-  const [navTitle,setNavTitle] = useState("");
   const { pathname } = useLocation();
 
   // Axtarılan məlumatın innerText-nin qlobal state-ə atılması 

@@ -4,8 +4,6 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { useSelector } from "react-redux";
 import '../assets/css/Galery.css';
-import { useEffect } from "react";
-import { useState } from "react";
 
 const Galery = () => {
     const lang = useSelector(state => state.langReducer.lang);
