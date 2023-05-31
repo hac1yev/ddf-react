@@ -60,7 +60,7 @@ const Qanunvericilik = () => {
         >
           <div className="legislation-section">
             {currentRecords.map((item) => (
-              item.url === null ? <div
+              item.url === "" ? <div
                 key={item.id}
                 className="legislation-divs"
                 data-aos="zoom-in-up"
