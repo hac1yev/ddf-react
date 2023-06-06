@@ -104,7 +104,7 @@ function Navbar(props) {
               </li>
               <li className="nav-item-custom">
                 <Link
-                  to="#"
+                  to="/about/history"
                 >
                   {!lang ? "Haqqımızda " : 'About us'}
                 </Link>
@@ -156,7 +156,7 @@ function Navbar(props) {
               </li>
               <li className="nav-item-custom">
                 <Link
-                  to="#!"
+                  to="/mines"
                 >
                   {!lang ? "Fəaliyyət" : 'Activity'}
                 </Link>
