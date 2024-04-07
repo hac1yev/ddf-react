@@ -8,17 +8,7 @@ import '../assets/css/Galery.css';
 const Galery = () => {
     const lang = useSelector(state => state.langReducer.lang);
     const { pathname } = useLocation();
-
-    // useEffect(() => {
-    //     const active = document.getElementById("active");
-    //     setNavTitle(active);
-    // }, [pathname]);
-
-    const handleVideoGalery = (e) => {
-        // setGaleryText(e.target.innerText);
-        // window.localStorage.setItem('galeryText', e.target.innerText);
-    };
-
+    
     return (
         <>
         <div className="heading-all">
@@ -34,9 +24,7 @@ const Galery = () => {
                 <div className="galery-tabs">
                     <Link
                         to="photos"
-                        onClick={handleVideoGalery}
                         className={
-                            // (galeryText === "Foto Qalereya" || galeryText === 'Photo Gallery' || galeryText === "Qalereya") ? "active" : "disactive"
                             pathname === '/media/gallery/photos' ? 'galery-link active' : 'galery-link'
                         }
                     >
@@ -44,9 +32,7 @@ const Galery = () => {
                     </Link>
                     <Link
                         to="videos"
-                        onClick={handleVideoGalery}
                         className={
-                            // (galeryText === "Video Qalereya" || galeryText === "Video Gallery") ? "active" : "disactive"
                             pathname === '/media/gallery/videos' ? 'galery-link active' : 'galery-link'
                         }
                     >
